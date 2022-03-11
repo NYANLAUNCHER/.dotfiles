@@ -181,6 +181,7 @@ pjt="$HOME/proj/template/"
 
 gd="$HOME/files/Godot_Engine/"
 
+nt="$HOME/notes/"
 ntproj="$HOME/notes/proj/"
 ntorg="$HOME/notes/org/"
 ntmc="$HOME/notes/mc/"
