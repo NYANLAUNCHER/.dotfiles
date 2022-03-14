@@ -179,11 +179,16 @@ pje="$HOME/proj/external/"
 pjp="$HOME/proj/personal/"
 pjt="$HOME/proj/template/"
 
+mc="$HOME/files/minecraft/"
+mcm="$HOME/files/minecraft/mods/"
+mcd="$HOME/files/minecraft/mods/dev/"
+
 gd="$HOME/files/Godot_Engine/"
 
 nt="$HOME/notes/"
 ntproj="$HOME/notes/proj/"
 ntorg="$HOME/notes/org/"
+ntconf="$HOME/notes/org/conf"
 ntmc="$HOME/notes/mc/"
 
 nv="$HOME/.config/nvim/"
