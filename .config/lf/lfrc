@@ -1,0 +1,42 @@
+set shell bash
+
+# Sources
+source cmds.sh
+
+
+# Sets
+set hidden true
+set ignorecase true
+set icons true
+
+set scrolloff 8
+
+
+# Maps
+##view/open the current file
+map <enter> :open
+map v :view
+
+##execute current file
+map x $$f
+map X !$f
+
+##semicolon to enter cmds
+map ";" ":"
+
+##scroll up/down
+map K scrollup
+map J scrolldown
+
+## Shortcuts
+map gp cd ~/proj/
+map gr cd ~/proj/repos/
+
+map gi cd ~/media/pics/
+map gv cd ~/media/vids/
+map ga cd ~/media/audio/
+
+map gf cd ~/files/
+map gt cd ~/tmp/
+map gd cd ~/tmp/downloads
+

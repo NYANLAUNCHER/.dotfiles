@@ -160,6 +160,9 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+export GOPATH="$HOME/.local/share/go"
+export PATH="$PATH:$GOPATH/bin"
+
 #Aliases
 alias luamake=$HOME/dev/external/lua-language-server/3rd/luamake/luamake
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"

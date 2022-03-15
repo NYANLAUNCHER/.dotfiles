@@ -1,3 +1,5 @@
+@theme "./theme/default/arthur"
+
 configuration {
 /*	modi: "window,run,ssh";*/
 /*	font: "mono 12";*/
