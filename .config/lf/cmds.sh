@@ -1,3 +1,5 @@
+#source: "https://pkg.go.dev/github.com/gokcehan/lf?utm_source=godoc#hdr-Syntax"
+
 # My custom commands
 
 #make a dir
@@ -18,15 +20,9 @@ cmd touch ${{
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
-        text/*) $EDITOR $fx;;
-        *) for f in $fx; do setsid $OPENER $f > /dev/null 2> /dev/null & done;;
+        text/*) nvim $fx;;
+        *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
     esac
-}}
-
-#view file based on type
-cmd view ${{
-    if ["$TERM" = "xterm-kitty"]
-    fi
 }}
 
 #remove a file/dir

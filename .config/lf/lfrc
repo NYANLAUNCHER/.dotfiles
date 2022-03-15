@@ -1,14 +1,21 @@
-set shell bash
+#source: "https://pkg.go.dev/github.com/gokcehan/lf"
 
 # Sources
 source cmds.sh
 
 
 # Sets
+set shell bash
 set hidden true
-set ignorecase true
 set icons true
 
+set previewer ~/.config/lf/extras/preview.sh
+set cleaner ~/.config/lf/extras/clean.sh
+
+set ignorecase true
+set incsearch true
+
+set mouse true # allow mouse input
 set scrolloff 8
 
 
@@ -28,7 +35,14 @@ map ";" ":"
 map K scrollup
 map J scrolldown
 
+##mouse input
+map <m-up> up
+map <m-down> down
+
 ## Shortcuts
+map gh
+map ~ cd ~/
+
 map gp cd ~/proj/
 map gr cd ~/proj/repos/
 

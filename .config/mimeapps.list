@@ -15,6 +15,7 @@ x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
 [Default Applications]
 image/bmp=sxiv.desktop;
 inode/directory=lf.desktop;
+text/sh=nvim.desktop
 text/cache-manifest=nvim.desktop;
 text/calendar=nvim.desktop;
 text/css=nvim.desktop;
