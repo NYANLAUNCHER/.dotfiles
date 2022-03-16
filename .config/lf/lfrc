@@ -1,7 +1,7 @@
 #source: "https://pkg.go.dev/github.com/gokcehan/lf"
 
 # Sources
-source cmds.sh
+source ~/.config/lf/cmds.sh
 
 
 # Sets

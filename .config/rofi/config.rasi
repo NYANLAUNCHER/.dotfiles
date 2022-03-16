@@ -1,4 +1,5 @@
-@theme "./theme/default/arthur"
+
+@theme "./themes/default/arthur"
 
 configuration {
 /*	modi: "window,run,ssh";*/
