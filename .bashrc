@@ -161,9 +161,9 @@ unset __conda_setup
 # <<< conda initialize <<<
 
 # Set shell vars
-export GOPATH="$HOME/.local/share/go"
-export PATH="$PATH:$GOPATH/bin"
 export EDITOR="nvim"
+export GOPATH="$HOME/.local/share/go:$HOME/proj/external/lua-language-server"
+export PATH="$PATH:$GOPATH/bin"
 
 #Aliases
 alias luamake=$HOME/dev/external/lua-language-server/3rd/luamake/luamake
