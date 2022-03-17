@@ -168,6 +168,7 @@ export PATH="$PATH:$GOPATH/bin"
 #Aliases
 alias luamake=$HOME/dev/external/lua-language-server/3rd/luamake/luamake
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias ncmpcpp="ncmp"
 
 #Vars
 EDITOR=nvim
@@ -176,6 +177,7 @@ EDITOR=nvim
 pics="$HOME/media/pics/"
 vids="$HOME/media/vids/"
 audio="$HOME/media/audio/"
+music="$HOME/media/audio/music/"
 downloads="$HOME/tmp/downloads/"
 
 pj="$HOME/proj/"
