@@ -7,3 +7,6 @@
 [submodule ".config/awesome"]
 	path = .config/awesome
 	url = https://github.com/NYANLAUNCHER/awesome.git
+[submodule ".config/rofi/tools/rofi-wifi-menu"]
+	path = .config/rofi/tools/rofi-wifi-menu
+	url = https://github.com/ericmurphyxyz/rofi-wifi-menu.git

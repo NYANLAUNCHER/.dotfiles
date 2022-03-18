@@ -162,18 +162,19 @@ unset __conda_setup
 
 # Set shell vars
 export EDITOR="nvim"
-export GOPATH="$HOME/.local/share/go:$HOME/proj/external/lua-language-server"
-export PATH="$PATH:$GOPATH/bin"
+export GOPATH="$HOME/.local/share/go"
+export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/"
 
-#Aliases
-alias luamake=$HOME/dev/external/lua-language-server/3rd/luamake/luamake
+# Aliases
+#alias luamake=$HOME/proj/external/lua-language-server/3rd/luamake/luamake
+#alias lua-language-server=$HOME/proj/external/lua-language-server/bin/lua-language-server
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmpcpp="ncmp"
 
-#Vars
+# Vars
 EDITOR=nvim
 
-##Shortcuts
+## Shortcuts
 pics="$HOME/media/pics/"
 vids="$HOME/media/vids/"
 audio="$HOME/media/audio/"

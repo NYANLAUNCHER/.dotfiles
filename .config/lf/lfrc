@@ -9,7 +9,7 @@ set shell bash
 set hidden true
 set icons true
 
-set previewer ~/.config/lf/extras/preview.sh
+set previewer  ~/.config/lf/extras/preview.sh
 set cleaner ~/.config/lf/extras/clean.sh
 
 set ignorecase true
