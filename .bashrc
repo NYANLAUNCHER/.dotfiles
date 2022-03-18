@@ -166,10 +166,10 @@ export GOPATH="$HOME/.local/share/go"
 export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/"
 
 # Aliases
-#alias luamake=$HOME/proj/external/lua-language-server/3rd/luamake/luamake
-#alias lua-language-server=$HOME/proj/external/lua-language-server/bin/lua-language-server
+alias luamake=$HOME/proj/external/lua-language-server/3rd/luamake/luamake
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmpcpp="ncmp"
+alias z="zathura"
 
 # Vars
 EDITOR=nvim
