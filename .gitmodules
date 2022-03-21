@@ -10,3 +10,6 @@
 [submodule ".config/qutebrowser"]
 	path = .config/qutebrowser
 	url = https://github.com/NYANLAUNCHER/qutebrowser.git
+[submodule "/home/markiep/.emacs.d"]
+	path = /home/markiep/.emacs.d
+	url = https://github.com/hlissner/doom-emacs
