@@ -171,7 +171,7 @@ export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/"
 # Aliases
 alias luamake=$HOME/proj/external/lua-language-server/3rd/luamake/luamake
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias ncmpcpp="ncmp"
+alias ncmp="ncmpcpp"
 alias z="zathura"
 
 # Vars
