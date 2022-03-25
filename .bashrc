@@ -199,9 +199,9 @@ mcd="$HOME/files/minecraft/mods/dev/"
 gd="$HOME/files/Godot_Engine/"
 
 nt="$HOME/notes/"
-ntproj="$HOME/notes/proj/"
-ntorg="$HOME/notes/org/"
-ntconf="$HOME/notes/org/config/"
+ntp="$HOME/notes/proj/"
+nto="$HOME/notes/org/"
+ntcfg="$HOME/notes/org/config/"
 ntmc="$HOME/notes/mc/"
 
 nv="$HOME/.config/nvim/"
