@@ -6,3 +6,4 @@ fi
 
 [[ -f ~/.bashrc ]] && . ~/.bashrc
 
+[[ -f ./xmodmap ]] && xmodmap ~/.config/X11/xmodmap
