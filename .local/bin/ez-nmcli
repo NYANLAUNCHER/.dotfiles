@@ -3,15 +3,34 @@
 
 connect () {
     read -p "Enter wifi device: " wifi_device
-    read -s -p "Enter password: " wifi_password
+    echo -n "Enter password: "
+    while IFS=$'\n' read -r -s -n1 pass; do
+    if [[ -z $pass ]]; then
+        echo
+        break
+    else
+        echo -n '*'
+        wifi_password+=$pass
+    fi
+    done
     nmcli device wifi connect "$wifi_device" password "$wifi_password"
+}
+
+list () {
+    nmcli device wifi list
 }
 
 case $1 in
     "connect") case $2 in
-        "") connect ;;
+        #list networks before showing prompt
+        "") list; connect ;;
+
         #no prompt
         "-np") nmcli device wifi connect "$3" password "$4" ;;
+
+        #don't list wifi networks
+        "-nl") connect ;;
     esac ;;
-    "list") nmcli device wifi list ;;
+
+    "list") list ;;
 esac
