@@ -1,0 +1,17 @@
+#!/bin/sh
+# nmcli wrapper script
+
+connect () {
+    read -p "Enter wifi device: " wifi_device
+    read -s -p "Enter password: " wifi_password
+    nmcli device wifi connect "$wifi_device" password "$wifi_password"
+}
+
+case $1 in
+    "connect") case $2 in
+        "") connect ;;
+        #no prompt
+        "-np") nmcli device wifi connect "$3" password "$4" ;;
+    esac ;;
+    "list") nmcli device wifi list ;;
+esac
