@@ -8,7 +8,7 @@ This repo stores my dotfiles as well as any other scripts for setting up a new m
 Clone this repo into the home dir
 ```sh
 cd ~
-git clone https://github.com/NYANLAUNCHER/dotfiles.git .dotfiles
+git clone --recursive https://github.com/NYANLAUNCHER/dotfiles.git .dotfiles
 ```
 Add this line to your ~/.bashrc.
 ```sh
