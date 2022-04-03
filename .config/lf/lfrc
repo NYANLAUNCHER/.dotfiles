@@ -1,16 +1,14 @@
 #source: "https://pkg.go.dev/github.com/gokcehan/lf"
 
-# Sources
 source ~/.config/lf/cmds.sh
-
 
 # Sets
 set shell bash
 set hidden true
 set icons true
 
-set previewer  ~/.config/lf/extras/preview.sh
-set cleaner ~/.config/lf/extras/clean.sh
+set previewer ./extras/preview.sh
+set cleaner ./extras/clean.sh
 
 set ignorecase true
 set incsearch true
@@ -21,27 +19,32 @@ set scrolloff 8
 
 # Maps
 ##view/open the current file
-map <enter> :open
-map v :view
+map <enter> open
+map l open
+map e edit
 
 ##execute current file
 map x $$f
 map X !$f
 
+##trash file
+#map D trash "$f"
+#map dd rm "$f"
+
 ##semicolon to enter cmds
-map ";" ":"
+#map ";" push ":"
+#map ":" push ";"
 
 ##scroll up/down
 map K scrollup
 map J scrolldown
 
 ##mouse input
-map <m-up> up
-map <m-down> down
+map <m-up> scrollup
+map <m-down> scrolldown
 
 ## Shortcuts
-map gh
-map ~ cd ~/
+map gh cd ~/
 
 map gp cd ~/proj/
 map gr cd ~/proj/repos/
@@ -52,5 +55,5 @@ map ga cd ~/media/audio/
 
 map gf cd ~/files/
 map gt cd ~/tmp/
-map gd cd ~/tmp/downloads
+map gd cd ~/tmp/downloads/
 

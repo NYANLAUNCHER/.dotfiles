@@ -2,6 +2,11 @@
 
 # My custom commands
 
+#run command with sudo
+cmd sudo ${{
+    sudo $1
+}}
+
 #make a dir
 cmd mkdir ${{
     printf "Dir Name: "
@@ -10,9 +15,14 @@ cmd mkdir ${{
 }}
 
 #make a file
-cmd touch ${{
-    printf "File Name: "
-    read ans
+cmd mkfile ${{
+    if [ -z "$1" ]
+    then
+        printf "File Name: "
+        read ans
+    else
+        ans="$1"
+    fi
     touch $ans
 }}
 
@@ -20,9 +30,27 @@ cmd touch ${{
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
-        text/*) nvim $fx;;
+        text/*) "$EDITOR" $fx;;
         *) for f in $fx; do xdg-open $f > /dev/null 2> /dev/null & done;;
     esac
+}}
+
+#edit a file using the EDITOR
+cmd edit ${{
+    if [ -n "$EDITOR" ]; then
+        "$EDITOR" "$f"
+    else
+        nvim "$f"
+    fi
+}}
+
+#edit a file using a gui editor
+cmd gedit ${{
+    emacs "$f"
+}}
+
+#trash a file/dir
+cmd trash ${{
 }}
 
 #remove a file/dir
@@ -34,8 +62,16 @@ cmd rm ${{
     [ $ans = "y" ] && rm -rf $fx
 }}
 
-#ex(tract) an archive
-cmd ex ${{
+#execute a file
+cmd execute ${{
+    case "$f" in
+        *.exe) wine "$f" ;;
+        *) ".$f" ;;
+    esac
+}}
+
+#extract an archive
+cmd unzip ${{
   case "$f" in
     *.tar.bz2) tar xjf "$f"   ;;
     *.tar.gz)  tar xzf "$f"   ;;
@@ -52,3 +88,20 @@ cmd ex ${{
   esac
 }}
 
+#create an archive
+cmd zip ${{
+  case "$f" in
+    *.tar.bz2) tar xjf "$f"   ;;
+    *.tar.gz)  tar xzf "$f"   ;;
+    *.bz2)     bunzip2 "$f"   ;;
+    *.rar)     unrar x "$f"   ;;
+    *.gz)      gunzip "$f"    ;;
+    *.tar)     tar xf "$f"    ;;
+    *.tbz2)    tar xjf "$f"   ;;
+    *.tgz)     tar xzf "$f"   ;;
+    *.zip)     unzip "$f"     ;;
+    *.Z)       uncompress "$f";;
+    *.7z)      7z x "$f"      ;;
+    *)         printf "Unsupported format." ;;
+  esac
+}}

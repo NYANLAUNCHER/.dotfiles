@@ -5,9 +5,13 @@ h=$3
 x=$4
 y=$5
 
-if [[ "$( file -Lb --mime-type "$file")" =~ ^image ]]; then
-    kitty +icat --silent --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file"
-    exit 1
+if [[ "$TERM" == "xterm-kitty" ]]
+then
+    printf "term = xterm-kitty"
+    if [[ "$( file -Lb --mime-type "$file")" =~ ^image ]]; then
+        kitty +icat --silent --transfer-mode file --place "${w}x${h}@${x}x${y}" "$file"
+        exit 1
+    fi
 fi
 
 pistol "$file"

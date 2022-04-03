@@ -172,7 +172,7 @@ alias ncmp="ncmpcpp"
 alias z="zathura"
 
 # Vars
-EDITOR=nvim
+EDITOR=emacs
 
 ## Shortcuts
 pics="$HOME/media/pics/"
