@@ -170,9 +170,10 @@ alias luamake=$HOME/proj/external/lua-language-server/3rd/luamake/luamake
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
 alias z="zathura"
+alias so="source"
 
 # Vars
-EDITOR=emacs
+EDITOR=nvim
 
 ## Shortcuts
 pics="$HOME/media/pics/"
@@ -201,4 +202,3 @@ ntmc="$HOME/notes/mc/"
 
 nv="$HOME/.config/nvim/"
 nvdata="$HOME/.local/share/nvim/"
-
