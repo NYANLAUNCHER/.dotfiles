@@ -197,8 +197,9 @@ gd="$HOME/files/Godot_Engine/"
 nt="$HOME/notes/"
 ntp="$HOME/notes/proj/"
 nto="$HOME/notes/org/"
-ntcfg="$HOME/notes/org/config/"
 ntmc="$HOME/notes/mc/"
+
+todo="$HOME/notes/org/TODO.org"
 
 nv="$HOME/.config/nvim/"
 nvdata="$HOME/.local/share/nvim/"
