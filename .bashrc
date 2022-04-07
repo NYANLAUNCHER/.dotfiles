@@ -179,7 +179,6 @@ EDITOR=nvim
 pics="$HOME/media/pics/"
 vids="$HOME/media/vids/"
 audio="$HOME/media/audio/"
-music="$HOME/media/audio/music/"
 downloads="$HOME/tmp/downloads/"
 
 pj="$HOME/proj/"
@@ -189,8 +188,6 @@ pjp="$HOME/proj/personal/"
 pjt="$HOME/proj/template/"
 
 mc="$HOME/files/minecraft/"
-mcm="$HOME/files/minecraft/mods/"
-mcd="$HOME/files/minecraft/mods/dev/"
 
 gd="$HOME/files/Godot_Engine/"
 
@@ -198,8 +195,7 @@ nt="$HOME/notes/"
 ntp="$HOME/notes/proj/"
 nto="$HOME/notes/org/"
 ntmc="$HOME/notes/mc/"
-
 todo="$HOME/notes/org/TODO.org"
 
 nv="$HOME/.config/nvim/"
-nvdata="$HOME/.local/share/nvim/"
+nvd="$HOME/.local/share/nvim/"
