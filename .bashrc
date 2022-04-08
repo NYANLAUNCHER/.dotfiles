@@ -160,7 +160,7 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# Set shell vars
+# Set env vars
 export EDITOR="nvim"
 export GOPATH="$HOME/.local/share/go"
 export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/"
