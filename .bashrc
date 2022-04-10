@@ -145,28 +145,12 @@ ex ()
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('$HOME/.local/share/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "$HOME/.local/share/conda/etc/profile.d/conda.sh" ]; then
-        . "$HOME/.local/share/conda/etc/profile.d/conda.sh"
-    else
-        export PATH="$HOME/.local/share/conda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
-
 # Set env vars
 export EDITOR="nvim"
 export GOPATH="$HOME/.local/share/go"
-export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/"
+export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/:$HOME/proj/external/lua-language-server/luamake/"
 
 # Aliases
-alias luamake=$HOME/proj/external/lua-language-server/3rd/luamake/luamake
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
 alias z="zathura"
