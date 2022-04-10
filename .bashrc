@@ -155,6 +155,8 @@ alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
 alias z="zathura"
 alias so="source"
+alias virtman="virt-manager"
+alias todo="$EDITOR $HOME/notes/org/TODO.org"
 
 # Vars
 EDITOR=nvim

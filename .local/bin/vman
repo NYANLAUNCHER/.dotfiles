@@ -1,26 +1,34 @@
 #!/bin/sh
-# A simple cli virtual machine manager for qemu
+# manage virtual machines with qemu
 
-# save vman data, like last used vm
-savefile="$HOME/.local/share/vman/save"
-
-# where the VMs get installed to
-vmInstallDir="$HOME/vm/"
-
+set installdir="$HOME/vm/"# the directory to install vms to
+set savefile="$HOME/.local/share/vman/save"# save vman data here
 set emuSys="x86_64"# the system to emulate
-imageSize="10G"# set the default disc image size
-imageName="Image.img"# set the default image name
+set vmName=""
+set startScript="$installdir$vmName/Start.sh"
 
-snapshot () {
-    echo "This is the snapshot command."
-    echo "It creates a snapshot of your virtual drive"
+set imgName="Image.img"# name of the virtual disc image
+set imgSize="8G"# name of the image
+set ramSize="2G"
+
+#source savefile
+
+start () {
+    echo "start a virtual machine"
 }
 
-menu () {
-    echo "That is not a supported command."
+create () {
+    echo "create|setup a virtual machine"
+}
+
+help () {
+    echo "Manage virtual machines with qemu!" 
 }
 
 case $1 in
-    "snap") snapshot ;;
-    *) menu ;;
+    "help") help ;;
+    "create") create ;;
+    "start") start ;;
+    #*) echo -e "That is not a supported command.\nTry, \"vman help\"." ;;
+    *) echo "$1" ;;
 esac
