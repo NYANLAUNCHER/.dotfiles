@@ -141,6 +141,7 @@ ex ()
   fi
 }
 
+
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
@@ -154,9 +155,16 @@ export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/:$HOM
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
 alias z="zathura"
-alias so="source"
+alias so="
+    if [ -z "$1" ];then
+        source "$HOME/.bashrc"
+    else
+        source
+    fi
+"
 alias virtman="virt-manager"
-alias todo="$EDITOR $HOME/notes/org/TODO.org"
+#alias todo="$EDITOR $HOME/notes/org/TODO.org"
+alias todo="$EDITOR $todo"
 
 # Vars
 EDITOR=nvim
