@@ -5,7 +5,7 @@ set installdir="$HOME/vm/"# the directory to install vms to
 set savefile="$HOME/.local/share/vman/save"# save vman data here
 set emuSys="x86_64"# the system to emulate
 set vmName=""
-set startScript="$installdir$vmName/Start.sh"
+set startScript="$installdir$vmName/Start.sh"# create script to start vm
 
 set imgName="Image.img"# name of the virtual disc image
 set imgSize="8G"# name of the image
@@ -17,7 +17,7 @@ start () {
     echo "start a virtual machine"
 }
 
-create () {
+init () {
     echo "create|setup a virtual machine"
 }
 
@@ -27,7 +27,7 @@ help () {
 
 case $1 in
     "help") help ;;
-    "create") create ;;
+    "init") init ;;
     "start") start ;;
     #*) echo -e "That is not a supported command.\nTry, \"vman help\"." ;;
     *) echo "$1" ;;
