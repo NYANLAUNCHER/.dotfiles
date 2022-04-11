@@ -146,10 +146,26 @@ ex ()
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
 
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/home/markiep/.local/share/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/home/markiep/.local/share/conda/etc/profile.d/conda.sh" ]; then
+        . "/home/markiep/.local/share/conda/etc/profile.d/conda.sh"
+    else
+        export PATH="/home/markiep/.local/share/conda/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+conda deactivate
+# <<< conda initialize <<<
+
 # Set env vars
 export EDITOR="nvim"
 export GOPATH="$HOME/.local/share/go"
-export PATH="$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/:$HOME/proj/external/lua-language-server/luamake/"
+export PATH="$HOME/.local/bin/:$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/:$HOME/proj/external/lua-language-server/luamake/"
 
 # Aliases
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
@@ -157,13 +173,14 @@ alias ncmp="ncmpcpp"
 alias z="zathura"
 alias so="
     if [ -z "$1" ];then
-        source "$HOME/.bashrc"
+        source '$HOME/.bashrc'
     else
         source
     fi
 "
 alias virtman="virt-manager"
-#alias todo="$EDITOR $HOME/notes/org/TODO.org"
+
+todo="$HOME/notes/org/TODO.org"
 alias todo="$EDITOR $todo"
 
 # Vars
@@ -189,7 +206,7 @@ nt="$HOME/notes/"
 ntp="$HOME/notes/proj/"
 nto="$HOME/notes/org/"
 ntmc="$HOME/notes/mc/"
-todo="$HOME/notes/org/TODO.org"
 
 nv="$HOME/.config/nvim/"
 nvd="$HOME/.local/share/nvim/"
+
