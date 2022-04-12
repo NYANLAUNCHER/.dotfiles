@@ -179,7 +179,7 @@ alias so="
     fi
 "
 alias virtman="virt-manager"
-
+alias su="sudo su"
 todo="$HOME/notes/org/TODO.org"
 alias todo="$EDITOR $todo"
 

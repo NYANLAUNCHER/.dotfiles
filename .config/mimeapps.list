@@ -24,8 +24,8 @@ text/csv-schema=nvim.desktop;
 text/html=qutebrowser.desktop
 text/troff=nvim.desktop;
 x-scheme-handler/geo=openstreetmap-geo-handler.desktop;
-x-scheme-handler/http=qutebrowser.desktop;
-x-scheme-handler/https=qutebrowser.desktop;
+x-scheme-handler/http=qutebrowser.desktop
+x-scheme-handler/https=qutebrowser.desktop
 x-scheme-handler/tel=org.kde.kdeconnect.handler.desktop;
 
 [Removed Associations]
