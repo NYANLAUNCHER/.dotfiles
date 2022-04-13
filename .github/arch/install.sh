@@ -13,12 +13,12 @@ base () {
             sxiv glxinfo nvtop btop snapd yay
 }
 
-creation () {
-    pacman -S obs-studio blender godot krita gimp 
-}
-
 dev () {
     pacman -S emacs clang boost boost-libs python-pip python
+}
+
+creation () {
+    pacman -S obs-studio blender godot krita gimp 
 }
 
 math () {
@@ -32,13 +32,16 @@ games () {
 
 case $1 in
     "base") base ;;
-    "dev") math ;;
+    "dev") dev ;;
+    "creation") creation ;;
     "math") math ;;
     "games") games ;;
-    ""|"all") base; dev; math; games ;;
+    ""|"all") base; dev; creation; math; games ;;
     *) 
     echo -e "That is not a supported command.\nUse:
-    \"sudo ./install-apps.sh dev\",
-    \"sudo ./install-apps.sh math\",
-    \"sudo ./install-apps.sh games\""
+    \"sudo ./install.sh base\",
+    \"sudo ./install.sh dev\",
+    \"sudo ./install.sh creation\",
+    \"sudo ./install.sh math\",
+    \"sudo ./install.sh games\""
 esac
