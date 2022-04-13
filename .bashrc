@@ -169,6 +169,7 @@ export PATH="$HOME/.local/bin/:$PATH:$GOPATH/bin:$HOME/proj/external/lua-languag
 
 # Aliases
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
 alias z="zathura"
 alias so="
