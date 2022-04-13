@@ -172,6 +172,7 @@ alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
 alias z="zathura"
+alias ardour="ardour7"
 alias so="
     if [ -z "$1" ];then
         source '$HOME/.bashrc'
