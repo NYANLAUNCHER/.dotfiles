@@ -2,7 +2,7 @@
 # update dotfiles
 
 # update file owners & permisions
-owner () {
+file_permisions () {
     OWNER="markiep"
     GROUP="markiep"
 }

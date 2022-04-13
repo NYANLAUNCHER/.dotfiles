@@ -2,7 +2,7 @@
 # install all configs
 
 # for easy install, run:
-## curl "https://github.com/NYANLAUNCHER/.dotfiles/blob/master/.github/install.sh" > "$HOME/install.sh"
+## curl "https://raw.githubusercontent.com/NYANLAUNCHER/.dotfiles/master/.github/install.sh" > "$HOME/install.sh"
 ## $HOME/install.sh
 
 
