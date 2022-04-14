@@ -121,7 +121,8 @@ source /usr/share/bash-completion/completions/gh
 # # usage: ex <file>
 ex ()
 {
-  if [ -f $1 ] ; then
+  if [ -f $1 ]; then
+    ft=file $1
     case $1 in
       *.tar.bz2) tar xjf $1   ;;
       *.tar.gz)  tar xzf $1   ;;
@@ -140,7 +141,6 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
-
 
 # BEGIN_KITTY_SHELL_INTEGRATION
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
