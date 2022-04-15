@@ -164,6 +164,7 @@ conda deactivate
 
 # Set env vars
 export EDITOR="nvim"
+export INPUTRC="$HOME/.config/inputrc"
 export GOPATH="$HOME/.local/share/go"
 export PATH="$HOME/.local/bin/:$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/:$HOME/proj/external/lua-language-server/luamake/"
 
@@ -182,9 +183,10 @@ alias so="
 "
 alias virtman="virt-manager"
 alias su="sudo su"
+alias gitinfo="onefetch"
+
 todo="$HOME/notes/org/TODO.org"
 alias todo="$EDITOR $todo"
-alias gitinfo="onefetch"
 
 # Vars
 EDITOR=nvim
