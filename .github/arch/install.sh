@@ -10,14 +10,14 @@
 base () {
     pacman -S neovim awesome picom sxhkd kitty rofi xorg-xinit xorg-xset xorg-xev xorg-xmodmap \
             xorg-setxkbmap flameshot ufw qutebrowser zathura zathura-pdf-poppler tree ripgrep \
-            sxiv glxinfo nvtop btop snapd yay
+            sxiv htop btop nvtop glxinfo flatpak yay
 }
 
 dev () {
     pacman -S emacs clang boost boost-libs python-pip python
 }
 
-creation () {
+media () {
     pacman -S obs-studio blender godot krita gimp 
 }
 
@@ -33,7 +33,7 @@ games () {
 case $1 in
     "base") base ;;
     "dev") dev ;;
-    "creation") creation ;;
+    "media") media ;;
     "math") math ;;
     "games") games ;;
     ""|"all") base; dev; creation; math; games ;;
