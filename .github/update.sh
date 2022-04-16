@@ -3,8 +3,8 @@
 
 # update file owners & permisions
 file_permisions () {
-    OWNER="markiep"
-    GROUP="markiep"
+    _owner="markiep"
+    _group="markiep"
 }
 
 # update submodules
