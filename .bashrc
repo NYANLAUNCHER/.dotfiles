@@ -178,12 +178,19 @@ alias so="
     if [ -z "$1" ];then
         source '$HOME/.bashrc'
     else
-        source
+        source '$1'
     fi
 "
 alias virtman="virt-manager"
 alias su="sudo su"
 alias gitinfo="onefetch"
+alias flameshot="
+    if [ -z "$1" ];then
+        flameshot launcher
+    else
+        flameshot '$1'
+    fi
+"
 
 todo="$HOME/notes/org/TODO.org"
 alias todo="$EDITOR $todo"

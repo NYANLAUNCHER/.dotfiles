@@ -10,3 +10,7 @@ file_permisions () {
 # update submodules
 submodules () {
 }
+
+# update tracked files
+tracked_files () {
+}

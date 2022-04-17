@@ -1,0 +1,37 @@
+
+super + r
+  rofi -show run
+
+super + d
+  rofi -show drun
+
+super + w
+  rofi -show window
+
+ctrl + alt + t
+  kitty
+
+#ctrl + alt + k
+  #cycle keyboard layoutback forwards
+
+#ctrl + alt + shift + k
+  #cycle keyboard layoutback backwards
+
+
+# Take screenshots
+
+##copy screenshot to clipboard from current screen
+Print
+  flameshot screen -c
+
+##save and copy screenshot from current screen
+ctrl + Print
+  flameshot screen -c -p ~/media/pics/screen/
+
+##copy rectangle select to clipboard
+shift + Print
+  flameshot gui -c
+
+##save and copy rectangle select from current screen
+ctrl + shift + Print
+  flameshot gui -c -p ~/media/pics/screen/
