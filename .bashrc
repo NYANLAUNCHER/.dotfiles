@@ -195,6 +195,7 @@ EDITOR=nvim
 pics="$HOME/media/pics/"
 vids="$HOME/media/vids/"
 audio="$HOME/media/audio/"
+music="$HOME/media/audio/music/"
 downloads="$HOME/tmp/downloads/"
 
 pj="$HOME/proj/"
@@ -206,6 +207,12 @@ pjt="$HOME/proj/template/"
 mc="$HOME/files/minecraft/"
 
 gd="$HOME/files/Godot_Engine/"
+
+dm="$HOME/docs/media/"
+dmb="$HOME/docs/media/books/"
+dmv="$HOME/docs/media/vids/"
+dma="$HOME/docs/media/audio/"
+dmp="$HOME/docs/media/pics/"
 
 nt="$HOME/notes/"
 ntp="$HOME/notes/proj/"
