@@ -175,7 +175,7 @@ alias ncmp="ncmpcpp"
 alias z="zathura"
 alias ardour="ardour7"
 alias so="
-    if [ -z "$1" ];then
+    if [ -z '$1' ];then
         source '$HOME/.bashrc'
     else
         source '$1'
@@ -185,12 +185,14 @@ alias virtman="virt-manager"
 alias su="sudo su"
 alias gitinfo="onefetch"
 alias flameshot="
-    if [ -z "$1" ];then
+    if [ -z '$1' ];then
         flameshot launcher
     else
         flameshot '$1'
     fi
 "
+#for drawing directed graphs
+alias dg="/usr/bin/dot"
 
 todo="$HOME/notes/org/TODO.org"
 alias todo="$EDITOR $todo"
