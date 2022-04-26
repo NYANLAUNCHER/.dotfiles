@@ -20,6 +20,19 @@ list () {
     nmcli device wifi list
 }
 
+help () {
+echo -e "Commands:
+    \"connect <args>\", Connect to wifi networks.
+      <args> = 
+          \"\" = List networks before showing prompt.
+          \"-np\" = No prompt.
+          \"-nl\" = Don't list wifi networks.
+
+    \"list\", Show wifi networks.
+
+    \"help\", List this helpful text."
+}
+
 case $1 in
     "connect") case $2 in
         #list networks before showing prompt
@@ -30,7 +43,9 @@ case $1 in
 
         #don't list wifi networks
         "-nl") connect ;;
+        *) echo -e "That is not a supported command.\nTry, \"ez-nmcli help\"."
     esac ;;
-
     "list") list ;;
+    "help") help ;;
+    *) echo -e "That is not a supported command.\nTry, \"ez-nmcli help\"."
 esac
