@@ -1,14 +1,14 @@
 #!/bin/sh
 # manage virtual machines with qemu
 
-set installdir="$HOME/vm/"# the directory to install vms to
-set savefile="$HOME/.local/share/vman/save"# save vman data here
+set installDir="$HOME/vm/"# the directory to install vms to
+set saveFile="$HOME/.local/share/vman/save"# save vman data here
 set emuSys="x86_64"# the system to emulate
 set vmName=""
-set startScript="$installdir$vmName/Start.sh"# create script to start vm
+set startScript="$installdir$vmName/start.sh"# create script to start vm
 
 set imgName="Image.img"# name of the virtual disc image
-set imgSize="8G"# name of the image
+set imgSize="8G"
 set ramSize="2G"
 
 #source savefile
