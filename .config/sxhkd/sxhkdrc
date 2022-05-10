@@ -11,15 +11,14 @@ super + w
 ctrl + alt + t
   kitty
 
-#ctrl + alt + k
+#super + k
   #cycle keyboard layoutback forwards
 
-#ctrl + alt + shift + k
+#super + shift + k
   #cycle keyboard layoutback backwards
 
 
 # Take screenshots
-
 ##copy screenshot to clipboard from current screen
 Print
   flameshot screen -c
