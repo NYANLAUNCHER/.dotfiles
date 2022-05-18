@@ -169,6 +169,7 @@ export GOPATH="$HOME/.local/share/go"
 export PATH="$HOME/.local/bin/:$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/:$HOME/proj/external/lua-language-server/luamake/"
 
 # Aliases
+alias n="nvim"
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
@@ -218,17 +219,13 @@ mc="$HOME/files/minecraft/"
 
 gd="$HOME/files/Godot_Engine/"
 
-dm="$HOME/docs/media/"
-dmb="$HOME/docs/media/books/"
-dmv="$HOME/docs/media/vids/"
-dma="$HOME/docs/media/audio/"
-dmp="$HOME/docs/media/pics/"
-
 nt="$HOME/notes/"
 ntp="$HOME/notes/proj/"
 nto="$HOME/notes/org/"
 ntmc="$HOME/notes/mc/"
 
 nv="$HOME/.config/nvim/"
+nvp="$HOME/.config/nvim/plugconfig/"
+nvc="$HOME/.config/nvim/plugin/"
 nvd="$HOME/.local/share/nvim/"
 

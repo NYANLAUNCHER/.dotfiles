@@ -1,4 +1,10 @@
 
+super + k
+  ./cyclekbdlayout.sh 1
+
+super + shift + k
+  ./cyclekbdlayout.sh -1
+
 super + r
   rofi -show run
 
