@@ -166,16 +166,16 @@ conda deactivate
 export EDITOR="nvim"
 export INPUTRC="$HOME/.config/inputrc"
 export GOPATH="$HOME/.local/share/go"
-export PATH="$HOME/.local/bin/:$PATH:$GOPATH/bin:$HOME/proj/external/lua-language-server/bin/:$HOME/proj/external/lua-language-server/luamake/"
+export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
 
 # Aliases
 alias n="nvim"
+alias rsc="rustc"
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
 alias ardour="ardour7"
 alias z="zathura"
-alias tt="typist"
 alias so="
     if [ -z '$1' ];then
         source '$HOME/.bashrc'
@@ -229,3 +229,4 @@ nvp="$HOME/.config/nvim/plugconfig/"
 nvc="$HOME/.config/nvim/plugin/"
 nvd="$HOME/.local/share/nvim/"
 
+. "$HOME/.cargo/env"

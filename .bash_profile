@@ -5,3 +5,4 @@ if [[ "$(tty)" = "/dev/tty1" ]]; then
 fi
 
 [[ -f "$HOME/.bashrc" ]] && . ~/.bashrc
+. "$HOME/.cargo/env"
