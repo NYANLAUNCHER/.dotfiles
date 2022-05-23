@@ -170,7 +170,9 @@ export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
 
 # Aliases
 alias n="nvim"
+alias pj="pjman"
 alias rsc="rustc"
+alias rsup="rustup"
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias ncmp="ncmpcpp"
@@ -181,6 +183,13 @@ alias so="
         source '$HOME/.bashrc'
     else
         source '$1'
+    fi
+"
+alias xmodmap="
+    if [ -z '$1' ];then
+        xmodmap $HOME/.config/X11/xmodmap
+    else
+        xmodmap $1
     fi
 "
 alias virtman="virt-manager"
