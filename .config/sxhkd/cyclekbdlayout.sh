@@ -20,7 +20,7 @@ layout="$((last_layout + $count))"
 
 if [ "$last_layout" -gt "${#layouts[@]}" ];then
     layout="0"
-if [ "$last_layout" -lt "0" ];then
+elif [ "$last_layout" -lt "0" ];then
     layout="${#layouts[@]}"
 elif [ "${#layouts[@]}"=="0" ];then
     layout="0"
@@ -33,8 +33,8 @@ xmodmap ~/.config/X11/xmodmap
 case $2 in
     "-no"|"--no-output") ;;
     "") 
-      echo -e "The \"layout\" var is equal to $layout.\n"
-      echo -e "The \"count\" var is equal to $count.\n"
-      echo -e "The \"layouts\" array is of size ${#layouts[@]}.\n"
+      echo -e "The \"layout\" var is equal to $layout."
+      echo -e "The \"count\" var is equal to $count."
+      echo -e "The \"layouts\" array is of size ${#layouts[@]}."
       echo -e "\"${layouts[$last_layout]}\" -> \"${layouts[$layout]}\"" ;;
 esac
