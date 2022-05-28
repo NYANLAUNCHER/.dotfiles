@@ -13,7 +13,7 @@ base () {
 }
 
 dev () {
-    pacman -S emacs clang boost boost-libs python-pip python iverilog ghdl rustup gunzip
+    pacman -S emacs clang boost boost-libs python-pip python iverilog ghdl rustup gunzip freecad
     rustup update
     rustup component add rls rust-analysis rust-src
     curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.cargo/bin/rust-analyzer

@@ -210,13 +210,15 @@ alias todo="$EDITOR $todo"
 
 # Env Vars
 EDITOR=nvim
+nl="
+"
 
 ## Shortcuts
 pics="$HOME/media/pics/"
 vids="$HOME/media/vids/"
 audio="$HOME/media/audio/"
 music="$HOME/media/audio/music/"
-downloads="$HOME/tmp/downloads/"
+dl="$HOME/tmp/downloads/"
 
 pj="$HOME/proj/"
 pjr="$HOME/proj/repos/"
@@ -224,9 +226,9 @@ pje="$HOME/proj/external/"
 pjp="$HOME/proj/personal/"
 pjt="$HOME/proj/template/"
 
-mc="$HOME/files/minecraft/"
-
+fc="$HOME/files/FreeCAD/"
 gd="$HOME/files/Godot_Engine/"
+mc="$HOME/files/minecraft/"
 
 nt="$HOME/notes/"
 ntp="$HOME/notes/proj/"
