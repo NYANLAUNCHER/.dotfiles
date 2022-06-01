@@ -228,6 +228,7 @@ pjt="$HOME/proj/template/"
 
 fc="$HOME/files/FreeCAD/"
 gd="$HOME/files/Godot_Engine/"
+bd="$HOME/files/Blender/"
 mc="$HOME/files/minecraft/"
 
 nt="$HOME/notes/"
