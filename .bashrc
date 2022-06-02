@@ -220,6 +220,7 @@ vids="$HOME/media/vids/"
 audio="$HOME/media/audio/"
 music="$HOME/media/audio/music/"
 dl="$HOME/tmp/downloads/"
+gh="$HOME/.github/"
 
 pj="$HOME/proj/"
 pjr="$HOME/proj/repos/"
