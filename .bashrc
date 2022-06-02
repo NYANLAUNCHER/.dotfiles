@@ -214,6 +214,7 @@ nl="
 "
 
 ## Shortcuts
+cfg="$HOME/.config/"
 pics="$HOME/media/pics/"
 vids="$HOME/media/vids/"
 audio="$HOME/media/audio/"
