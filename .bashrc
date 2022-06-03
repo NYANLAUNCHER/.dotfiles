@@ -209,7 +209,7 @@ todo="$HOME/notes/org/TODO.org"
 alias todo="$EDITOR $todo"
 
 # Env Vars
-XDG_CONFIG_DIR="$HOME/.cfg"
+XDG_CONFIG_HOME="$HOME/.cfg"
 EDITOR=nvim
 nl="
 "
