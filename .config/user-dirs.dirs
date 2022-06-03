@@ -5,7 +5,7 @@
 # homedir-relative path, or XDG_xxx_DIR="/yyy", where /yyy is an
 # absolute path. No other format is supported.
 # 
-XDG_CONFIG_DIR="$HOME/.cfg/"
+XDG_CONFIG_DIR="$HOME/.config/"
 XDG_DESKTOP_DIR="$HOME/.desktop/"
 XDG_DOWNLOAD_DIR="$HOME/tmp/downloads/"
 XDG_TEMPLATES_DIR="$HOME/attic/templates/"
