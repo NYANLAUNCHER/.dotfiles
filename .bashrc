@@ -167,14 +167,15 @@ export EDITOR="nvim"
 export INPUTRC="$HOME/.config/inputrc"
 export GOPATH="$HOME/.local/share/go"
 export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
+export nl="
+"
 
 # Aliases
 alias n="nvim"
-alias pj="pjman"
-alias rsc="rustc"
-alias rsup="rustup"
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias rsc="rustc"
+alias rsup="rustup"
 alias ncmp="ncmpcpp"
 alias ardour="ardour7"
 alias z="zathura"
@@ -207,12 +208,6 @@ alias dg="/usr/bin/dot"
 
 todo="$HOME/notes/org/TODO.org"
 alias todo="$EDITOR $todo"
-
-# Env Vars
-XDG_CONFIG_HOME="$HOME/.config"
-EDITOR=nvim
-nl="
-"
 
 ## Shortcuts
 cfg="$HOME/.config/"
