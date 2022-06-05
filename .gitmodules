@@ -4,9 +4,6 @@
 [submodule ".config/rofi/tools/rofi-wifi-menu"]
 	path = .config/rofi/tools/rofi-wifi-menu
 	url = https://github.com/ericmurphyxyz/rofi-wifi-menu.git
-[submodule ".config/qutebrowser"]
-	path = .config/qutebrowser
-	url = https://github.com/NYANLAUNCHER/qutebrowser.git
 [submodule ".emacs.d"]
 	path = .emacs.d
 	url = https://github.com/NYANLAUNCHER/.emacs.d.git
