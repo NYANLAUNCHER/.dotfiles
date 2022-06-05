@@ -10,3 +10,6 @@
 [submodule ".config/nvim"]
 	path = .config/nvim
 	url = https:/NYANLAUNCHER/nvim
+[submodule ".config/qutebrowser"]
+	path = .config/qutebrowser
+	url = https://github.com/NYANLAUNCHER/qutebrowser
