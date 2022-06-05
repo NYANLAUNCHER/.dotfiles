@@ -188,7 +188,7 @@ alias so="
 "
 alias xmodmap="
     if [ -z '$1' ];then
-        xmodmap $HOME/.config/X11/xmodmap
+        sudo xmodmap $HOME/.config/X11/xmodmap
     else
         xmodmap $1
     fi
@@ -218,11 +218,11 @@ music="$HOME/media/audio/music/"
 dl="$HOME/tmp/downloads/"
 gh="$HOME/.github/"
 
-s="$HOME/src/"
-sr="$HOME/src/repos/"
-se="$HOME/src/external/"
-sp="$HOME/src/personal/"
-st="$HOME/src/template/"
+sc="$HOME/src/"
+scr="$HOME/src/repos/"
+sce="$HOME/src/external/"
+scp="$HOME/src/personal/"
+sct="$HOME/src/template/"
 
 fc="$HOME/files/FreeCAD/"
 gd="$HOME/files/Godot_Engine/"
@@ -230,7 +230,7 @@ bd="$HOME/files/Blender/"
 mc="$HOME/files/minecraft/"
 
 nt="$HOME/notes/"
-ntp="$HOME/notes/proj/"
+nts="$HOME/notes/src/"
 nto="$HOME/notes/org/"
 ntmc="$HOME/notes/minecraft/"
 
