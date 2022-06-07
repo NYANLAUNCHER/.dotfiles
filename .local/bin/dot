@@ -1,0 +1,8 @@
+#!/bin/bash
+# Manage dot files
+
+dot() {
+    git --git-dir=$HOME/.dotfiles --work-tree=$HOME
+}
+
+dot $@
