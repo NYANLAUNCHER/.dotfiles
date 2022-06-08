@@ -162,6 +162,8 @@ unset __conda_setup
 conda deactivate
 # <<< conda initialize <<<
 
+. "$HOME/.cargo/env"
+
 # Set env vars
 export EDITOR="nvim"
 export INPUTRC="$HOME/.config/inputrc"
@@ -170,73 +172,5 @@ export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
 export nl="
 "
 
-# Aliases
-alias n="nvim"
-alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias rsc="rustc"
-alias rsup="rustup"
-alias ncmp="ncmpcpp"
-alias ardour="ardour7"
-alias z="zathura"
-alias so="
-    if [ -z '$1' ];then
-        source '$HOME/.bashrc'
-    else
-        source '$1'
-    fi
-"
-alias xmodmap="
-    if [ -z '$1' ];then
-        sudo xmodmap $HOME/.config/X11/xmodmap
-    else
-        xmodmap $1
-    fi
-"
-alias virtman="virt-manager"
-alias su="sudo su"
-alias gitinfo="onefetch"
-alias flameshot="
-    if [ -z '$1' ];then
-        flameshot launcher
-    else
-        flameshot '$1'
-    fi
-"
-#for drawing directed graphs
-alias dg="/usr/bin/dot"
-
-todo="$HOME/notes/org/TODO.org"
-alias todo="$EDITOR $todo"
-
-## Shortcuts
-cfg="$HOME/.config/"
-pics="$HOME/media/pics/"
-vids="$HOME/media/vids/"
-audio="$HOME/media/audio/"
-music="$HOME/media/audio/music/"
-dl="$HOME/tmp/downloads/"
-gh="$HOME/.github/"
-
-sc="$HOME/src/"
-scr="$HOME/src/repos/"
-sce="$HOME/src/external/"
-scp="$HOME/src/personal/"
-sct="$HOME/src/template/"
-
-fc="$HOME/files/FreeCAD/"
-gd="$HOME/files/Godot_Engine/"
-bd="$HOME/files/Blender/"
-mc="$HOME/files/minecraft/"
-
-nt="$HOME/notes/"
-nts="$HOME/notes/src/"
-nto="$HOME/notes/org/"
-ntmc="$HOME/notes/minecraft/"
-
-nv="$HOME/.config/nvim/"
-nvp="$HOME/.config/nvim/plugcfg/"
-nvc="$HOME/.config/nvim/cfg/"
-nvd="$HOME/.local/share/nvim/"
-
-. "$HOME/.cargo/env"
+source "$HOME/.config/shell/aliases"
+source "$HOME/.config/shell/shortcuts"

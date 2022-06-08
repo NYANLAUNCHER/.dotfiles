@@ -1,10 +1,2 @@
 #!/bin/bash
-# Update dot files
-
-dot() {
-    git --git-dir=$HOME/.dotfiles --work-tree=$HOME
-}
-
-#dot add "${files[@]}"
-#dot commit -m "$message"
-#dot push origin master
+# update dotfiles

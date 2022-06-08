@@ -10,11 +10,13 @@ base() {
     pacman -S \
       neovim awesome picom sxhkd kitty rofi xorg-xinit xorg-xset xorg-xev xorg-xmodmap \
       xorg-setxkbmap flameshot ufw qutebrowser tree ripgrep curl mpv sxiv htop btop nvtop \
-      glxinfo flatpak zathura zathura-pdf-poppler pandoc
+      glxinfo flatpak zathura zathura-pdf-poppler pandoc lua-language-server
 }
 
 dev() {
-    pacman -S emacs clang boost boost-libs python-pip python iverilog ghdl rustup gunzip freecad dmd rdmd dub ldc gopls xxd
+    pacman -S 
+      emacs clang boost boost-libs python-pip python iverilog ghdl rustup gunzip \
+      dmd rdmd dub ldc gopls xxd lua-language-server
     rustup update
     rustup component add rls rust-analysis rust-src
     curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.cargo/bin/rust-analyzer
@@ -22,7 +24,7 @@ dev() {
 }
 
 creation() {
-    pacman -S obs-studio blender godot krita gimp inkscape
+    pacman -S obs-studio blender godot krita gimp inkscape freecad 
 }
 
 math() {

@@ -1,0 +1,32 @@
+#!/bin/bash
+# set shell shortcuts
+
+## Shortcuts
+cfg="$HOME/.config/"
+pics="$HOME/media/pics/"
+vids="$HOME/media/vids/"
+audio="$HOME/media/audio/"
+music="$HOME/media/audio/music/"
+dl="$HOME/tmp/downloads/"
+gh="$HOME/.github/"
+
+sc="$HOME/src/"
+scr="$HOME/src/repos/"
+sce="$HOME/src/external/"
+scp="$HOME/src/personal/"
+sct="$HOME/src/template/"
+
+fc="$HOME/files/FreeCAD/"
+gd="$HOME/files/Godot_Engine/"
+bd="$HOME/files/Blender/"
+mc="$HOME/files/minecraft/"
+
+nt="$HOME/notes/"
+nts="$HOME/notes/src/"
+nto="$HOME/notes/org/"
+ntmc="$HOME/notes/minecraft/"
+
+nv="$HOME/.config/nvim/"
+nvp="$HOME/.config/nvim/plugcfg/"
+nvc="$HOME/.config/nvim/cfg/"
+nvd="$HOME/.local/share/nvim/"

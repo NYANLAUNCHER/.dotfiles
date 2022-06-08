@@ -1,5 +1,5 @@
-#source: "https://pkg.go.dev/github.com/gokcehan/lf"
-
+#!/bin/bash
+# source: "https://pkg.go.dev/github.com/gokcehan/lf"
 source ~/.config/lf/cmds.sh
 
 # Sets
@@ -43,17 +43,5 @@ map J scrolldown
 map <m-up> scrollup
 map <m-down> scrolldown
 
-## Shortcuts
-map gh cd ~/
-
-map gp cd ~/proj/
-map gr cd ~/proj/repos/
-
-map gi cd ~/media/pics/
-map gv cd ~/media/vids/
-map ga cd ~/media/audio/
-
-map gf cd ~/files/
-map gt cd ~/tmp/
-map gd cd ~/tmp/downloads/
-
+# TODO:
+## Find a way to use env vars in lf
