@@ -235,8 +235,8 @@ nto="$HOME/notes/org/"
 ntmc="$HOME/notes/minecraft/"
 
 nv="$HOME/.config/nvim/"
-nvp="$HOME/.config/nvim/plugconfig/"
-nvc="$HOME/.config/nvim/plugin/"
+nvp="$HOME/.config/nvim/plugcfg/"
+nvc="$HOME/.config/nvim/cfg/"
 nvd="$HOME/.local/share/nvim/"
 
 . "$HOME/.cargo/env"
