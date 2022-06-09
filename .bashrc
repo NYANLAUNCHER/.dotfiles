@@ -69,13 +69,11 @@ if ${use_color} ; then
 		fi
 	fi
     parse_git_branch() {
-        git_branch=$((
-            git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
-        ))
-        echo "$git_branch"
+        echo "$((git branch --show-current))"
     }
 	if [[ ${EUID} == 0 ]] ; then
         PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
+        #PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][$((parse_git_branch))]\\n \[\e[33m\]\w> \[\e[00m\]"
 	else
         PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
 	fi
@@ -94,11 +92,6 @@ else
 fi
 
 unset use_color safe_term match_lhs sh
-
-#alias cp="cp -i"                          # confirm before overwriting something
-#alias df='df -h'                          # human-readable sizes
-#alias free='free -m'                      # show sizes in MB
-#alias more=less
 
 xhost +local:root > /dev/null 2>&1
 
