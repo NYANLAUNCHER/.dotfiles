@@ -68,14 +68,14 @@ if ${use_color} ; then
 			eval $(dircolors -b /etc/DIR_COLORS)
 		fi
 	fi
-
     parse_git_branch() {
-        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+        git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/\1/'
     }
 	if [[ ${EUID} == 0 ]] ; then
-        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][\$parse_git_branch]\\n \[\e[33m\]\w> \[\e[00m\]"
+        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][$((parse_git_branch))]\\n \[\e[33m\]\w> \[\e[00m\]"
+        #PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][$((parse_git_branch))\]\\n \[\e[33m\]\w> \[\e[00m\]"
 	else
-        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][\$parse_git_branch]\\n \[\e[33m\]\w> \[\e[00m\]"
+        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][$((parse_git_branch))]\\n \[\e[33m\]\w> \[\e[00m\]"
 	fi
 
 	alias ls='ls --color=auto'
