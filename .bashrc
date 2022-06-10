@@ -72,10 +72,10 @@ if ${use_color} ; then
         echo "$((git branch --show-current))"
     }
 	if [[ ${EUID} == 0 ]] ; then
-        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
-        #PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][$((parse_git_branch))]\\n \[\e[33m\]\w> \[\e[00m\]"
+        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\u@\h]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
+        #PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\u@\h]\[\e[00m\]:\[\e[35m\][$((parse_git_branch))]\\n \[\e[33m\]\w> \[\e[00m\]"
 	else
-        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\h@\u]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
+        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\u@\h]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
 	fi
 
 	alias ls='ls --color=auto'
@@ -141,22 +141,6 @@ ex ()
 if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; then source "$KITTY_INSTALLATION_DIR/shell-integration/bash/kitty.bash"; fi
 # END_KITTY_SHELL_INTEGRATION
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/home/markiep/.local/share/conda/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/home/markiep/.local/share/conda/etc/profile.d/conda.sh" ]; then
-        . "/home/markiep/.local/share/conda/etc/profile.d/conda.sh"
-    else
-        export PATH="/home/markiep/.local/share/conda/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-conda deactivate
-# <<< conda initialize <<<
-
 . "$HOME/.cargo/env"
 
 # Set env vars
@@ -169,3 +153,4 @@ export nl="
 
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcuts"
+source "$HOME/.config/shell/conda"
