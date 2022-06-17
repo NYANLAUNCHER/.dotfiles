@@ -8,7 +8,7 @@
 XDG_DESKTOP_DIR="$HOME/.desktop/"
 XDG_DOWNLOAD_DIR="$HOME/tmp/downloads/"
 XDG_TEMPLATES_DIR="$HOME/attic/templates/"
-XDG_PUBLICSHARE_DIR="$HOME/"
+XDG_PUBLICSHARE_DIR="$HOME/attic/public/"
 XDG_DOCUMENTS_DIR="$HOME/files/"
 XDG_MUSIC_DIR="$HOME/media/audio/music/"
 XDG_PICTURES_DIR="$HOME/media/pics/"

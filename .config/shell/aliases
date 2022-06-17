@@ -4,6 +4,7 @@
 alias n="nvim"
 alias rm="$HOME/.local/bin/trash"
 alias rmf="/usr/bin/rm"
+alias bf="brainfuck"
 alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
 alias gita="git add $@"

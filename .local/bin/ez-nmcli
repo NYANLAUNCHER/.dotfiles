@@ -34,6 +34,7 @@ echo -e "Commands:
 }
 
 case $1 in
+    ""|"list") list ;;
     "connect") case $2 in
         #list networks before showing prompt
         "") list; connect ;;
@@ -45,7 +46,6 @@ case $1 in
         "-nl") connect ;;
         *) echo -e "That is not a supported command.\nTry, \"ez-nmcli help\"."
     esac ;;
-    "list") list ;;
     "help") help ;;
     *) echo -e "That is not a supported command.\nTry, \"ez-nmcli help\"."
 esac
