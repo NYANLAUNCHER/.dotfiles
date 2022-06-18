@@ -4,6 +4,16 @@
 
 [[ $- != *i* ]] && return
 
+# Set env vars
+export EDITOR="nvim"
+export INPUTRC="$HOME/.config/inputrc"
+export GOPATH="$HOME/.local/share/go"
+export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
+# default prompt
+export PS1="[\u@\h \W]\$ "
+export nl="
+"
+
 colors() {
 	local fgc bgc vals seq0
 
@@ -68,20 +78,11 @@ if ${use_color} ; then
 			eval $(dircolors -b /etc/DIR_COLORS)
 		fi
 	fi
-    parse_git_branch() {
-        echo "$((git branch --show-current))"
-    }
-	if [[ ${EUID} == 0 ]] ; then
-        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\u@\h]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
-        #PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\u@\h]\[\e[00m\]:\[\e[35m\][$((parse_git_branch))]\\n \[\e[33m\]\w> \[\e[00m\]"
-	else
-        PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\u@\h]\[\e[00m\]:\[\e[35m\][]\\n \[\e[33m\]\w> \[\e[00m\]"
-	fi
-
-	alias ls='ls --color=auto'
-	alias grep='grep --colour=auto'
-	alias egrep='egrep --colour=auto'
-	alias fgrep='fgrep --colour=auto'
+    export PS1="\n\[\e[36m\][\t]\[\e[00m\]:\[\e[32m\][\u@\h]\[\e[00m\]\n \[\e[33m\]\w> \[\e[00m\]"
+    alias ls='ls --color=auto'
+    alias grep='grep --colour=auto'
+    alias egrep='egrep --colour=auto'
+    alias fgrep='fgrep --colour=auto'
 else
 	if [[ ${EUID} == 0 ]] ; then
 		# show root@ when we don't have colors
@@ -107,10 +108,6 @@ shopt -s expand_aliases
 
 # Enable history appending instead of overwriting.  #139609
 shopt -s histappend
-
-# Auto Complete
-source /usr/share/bash-completion/completions/git
-source /usr/share/bash-completion/completions/gh
 
 # # ex - archive extractor
 # # usage: ex <file>
@@ -142,14 +139,6 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 # END_KITTY_SHELL_INTEGRATION
 
 . "$HOME/.cargo/env"
-
-# Set env vars
-export EDITOR="nvim"
-export INPUTRC="$HOME/.config/inputrc"
-export GOPATH="$HOME/.local/share/go"
-export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
-export nl="
-"
 
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcuts"

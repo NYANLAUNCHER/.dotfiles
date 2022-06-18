@@ -1,0 +1,12 @@
+#!/bin/bash
+# set colors and escape codes
+
+export CODE_RESET=""
+
+# output colored text
+colored_text() {
+    color="$1"
+    text="$2"
+    output=""
+    echo "$output"
+}
