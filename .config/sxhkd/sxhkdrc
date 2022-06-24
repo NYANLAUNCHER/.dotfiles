@@ -1,8 +1,8 @@
 
-#alt + k
+#super + alt + k
 #  ./cyclekbdlayout.sh 1
 #
-#alt + shift + k
+#super + alt + shift + k
 #  ./cyclekbdlayout.sh -1
 
 super + r
@@ -16,12 +16,6 @@ super + w
 
 ctrl + alt + t
   kitty
-
-#super + k
-  #cycle keyboard layoutback forwards
-
-#super + shift + k
-  #cycle keyboard layoutback backwards
 
 
 # Take screenshots
