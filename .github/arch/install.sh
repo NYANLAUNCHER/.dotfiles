@@ -27,7 +27,7 @@ base() {
       xorg-setxkbmap flameshot ufw qutebrowser tree ripgrep curl mpv sxiv htop btop nvtop \
       glxinfo flatpak zathura zathura-pdf-poppler pandoc lua-language-server paru
     mk-paru
-    paru openrazer-git polychromatic
+    paru openrazer-git polychromatic f3d
     echo "You should run this: \"sudo gpasswd -a $USER plugdev\""
 }
 
