@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # manage virtual machines with qemu
 
 set installDir="$HOME/vm/"# the directory to install vms to
@@ -29,6 +29,5 @@ case $1 in
     "help") help ;;
     "init") init ;;
     "start") start ;;
-    #*) echo -e "That is not a supported command.\nTry, \"vman help\"." ;;
-    *) echo "$1" ;;
+    *) echo -e "That is not a supported command.\nTry, \"vman help\"." ;;
 esac
