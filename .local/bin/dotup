@@ -1,3 +1,19 @@
 #!/bin/bash
 # update dot files
+default_message="update"
+
+help() {
+echo -e "
+\e[34mSynopsis:\e[0m
+\e[32m> dotup -a <files|dirs> -r <files|dirs> -m \"message\" -u <repo> <branch>\e[0m
+
+\e[34mDescription:\e[0m
+  \"-a\",\"-r\",\"-m\",\"-u\" = add, rm, message, upstream
+  if \"-a\"|\"-r\" aren't provided then it will add <files|dirs> based on \"git status\"
+  if \"-m\" isn't provided it'll use the \"\$default_message\" var
+  if \"-u\" isn't provided it'll
+  replace <repo> with the last used remote
+  and replace <branch> with the current branch
+"
+}
 
