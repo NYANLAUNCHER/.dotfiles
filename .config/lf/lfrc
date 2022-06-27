@@ -29,6 +29,10 @@ map X !$f
 
 ##trash file
 #map D trash "$f"
+#map dd trash "$f"
+
+##remove file
+#map D rm "$f"
 #map dd rm "$f"
 
 ##semicolon to enter cmds

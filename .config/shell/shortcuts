@@ -23,7 +23,7 @@ mc="$HOME/files/minecraft/"
 nt="$HOME/notes/"
 nts="$HOME/notes/src/"
 nto="$HOME/notes/org/"
-todo="$HOME/notes/org/TODO.org"
+todo="$HOME/notes/org/TODO"
 alias todo="$EDITOR $todo"
 
 nv="$HOME/.config/nvim/"

@@ -11,6 +11,8 @@ export GOPATH="$HOME/.local/share/go"
 export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
 # default prompt
 export PS1="[\u@\h \W]\$ "
+# set the max pwd history
+export DIRSTACKMAX="100"
 export nl="
 "
 
@@ -140,6 +142,7 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 
 . "$HOME/.cargo/env"
 
+source "$HOME/.config/shell/conda"
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcuts"
-source "$HOME/.config/shell/conda"
+
