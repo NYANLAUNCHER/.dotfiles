@@ -1,0 +1,5 @@
+
+- TODO:
+  - ability to cd into the cwd on exit
+  - have cursor cycle the list
+  - get previews working

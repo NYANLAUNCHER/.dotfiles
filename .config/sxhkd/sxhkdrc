@@ -14,7 +14,8 @@ super + d
 super + w
   rofi -show window
 
-ctrl + alt + t
+# open a terminal
+super + enter
   kitty
 
 # Take screenshots

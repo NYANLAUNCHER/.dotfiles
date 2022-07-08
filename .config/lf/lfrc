@@ -1,51 +1,53 @@
 #!/bin/bash
 # source: "https://pkg.go.dev/github.com/gokcehan/lf"
-source ~/.config/lf/cmds.sh
+source ~/.config/lf/cmds
 
 # Sets
 set shell bash
+set shellopts '-eu'
+set ifs "\n"
 set hidden true
 set icons true
 
-set previewer ./extras/preview.sh
-set cleaner ./extras/clean.sh
+set previewer ./scripts/preview.sh
+set cleaner ./scripts/clean.sh
 
 set ignorecase true
 set incsearch true
 
-set mouse true # allow mouse input
+#set mouse true # allow mouse input
 set scrolloff 8
 
 
 # Maps
-##view/open the current file
-map <enter> open
+
+map <enter> shell
+
+# view/open the current file
 map l open
 map e edit
+map o &mimeopen $f
+map O $mimeopen --ask $f
 
-##execute current file
+# execute current file
 map x $$f
 map X !$f
 
-##trash file
+# trash file
 #map D trash "$f"
-#map dd trash "$f"
 
-##remove file
-#map D rm "$f"
+# remove file
 #map dd rm "$f"
 
-##semicolon to enter cmds
+# semicolon to enter cmds
 #map ";" push ":"
 #map ":" push ";"
 
-##scroll up/down
+# scroll up/down
 map K scrollup
 map J scrolldown
 
-##mouse input
+# mouse input
 map <m-up> scrollup
 map <m-down> scrolldown
 
-# TODO:
-## Find a way to use env vars in lf

@@ -146,3 +146,7 @@ source "$HOME/.config/shell/conda"
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcuts"
 
+LFCD="$HOME/.config/lf/scripts/lfcd.sh"
+if [ -f "$LFCD" ]; then
+    source "$LFCD"
+fi

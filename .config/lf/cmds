@@ -1,20 +1,19 @@
 #source: "https://pkg.go.dev/github.com/gokcehan/lf?utm_source=godoc#hdr-Syntax"
-
 # My custom commands
 
-#run command with sudo
+# run command with sudo
 cmd sudo ${{
     sudo $1
 }}
 
-#make a dir
+# make a dir
 cmd mkdir ${{
     printf "Dir Name: "
     read ans
     mkdir $ans
 }}
 
-#make a file
+# make a file
 cmd mkfile ${{
     if [ -z "$1" ]
     then
@@ -26,7 +25,7 @@ cmd mkfile ${{
     touch $ans
 }}
 
-#open file based on type
+# open file based on type
 cmd open ${{
     test -L $f && f=$(readlink -f $f)
     case $(file --mime-type $f -b) in
@@ -35,7 +34,7 @@ cmd open ${{
     esac
 }}
 
-#edit a file using the EDITOR
+# edit a file using the EDITOR
 cmd edit ${{
     if [ -n "$EDITOR" ]; then
         "$EDITOR" "$f"
@@ -44,16 +43,17 @@ cmd edit ${{
     fi
 }}
 
-#edit a file using a gui editor
+# edit a file using a gui editor
 cmd gedit ${{
     emacs "$f"
 }}
 
-#trash a file/dir
+# trash a file/dir
 cmd trash ${{
+    ~/.local/bin/trash "$@"
 }}
 
-#remove a file/dir
+# remove a file/dir
 cmd rm ${{
     set -f
     printf "$fx\n"
@@ -62,7 +62,7 @@ cmd rm ${{
     [ $ans = "y" ] && rm -rf $fx
 }}
 
-#execute a file
+# execute a file
 cmd execute ${{
     case "$f" in
         *.exe) wine "$f" ;;
@@ -70,7 +70,7 @@ cmd execute ${{
     esac
 }}
 
-#extract an archive
+# extract an archive
 cmd unzip ${{
   case "$f" in
     *.tar.bz2) tar xjf "$f"   ;;
@@ -88,7 +88,7 @@ cmd unzip ${{
   esac
 }}
 
-#create an archive
+# create an archive
 cmd zip ${{
   case "$f" in
     *.tar.bz2) tar xjf "$f"   ;;

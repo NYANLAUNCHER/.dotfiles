@@ -1,6 +1,9 @@
 #!/bin/bash
 # set shell shortcuts
 
+# "https://stackoverflow.com/questions/52996503/access-local-shell-variables-in-vim"
+set -a
+
 ## Shortcuts
 cfg="$HOME/.config/"
 pics="$HOME/media/pics/"

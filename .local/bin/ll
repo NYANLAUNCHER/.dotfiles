@@ -1,4 +1,0 @@
-#!/bin/bash
-# A hopefully better ls
-
-ls $1 -AFoqv --color --group-directories-first | tail -n +2 && find -maxdepth 1 -type f -printf '%s\n' | awk '{total+=$1} END {print total bytes}'

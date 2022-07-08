@@ -6,10 +6,10 @@
 #"https://github.com/pystardust/ani-cli"
 #"https://docs.anbox.io/userguide/install.html"
 
-# make it smart enough to check if paru is already installed
+# make sure paru is installed
 mk-paru() {
-    if [ ! command -v <the_command> &> /dev/null ];then
-        echo "<the_command> could not be found"
+    if [ ! command -v paru &> /dev/null ];then
+        echo "paru could not be found"
         exit
     elif;then
     pacman -S --needed base-devel
@@ -24,17 +24,17 @@ mk-paru() {
 base() {
     pacman -S \
       neovim awesome picom git sxhkd kitty rofi xorg-xinit xorg-xset xorg-xev xorg-xmodmap \
-      xorg-setxkbmap flameshot ufw qutebrowser tree ripgrep curl mpv sxiv htop btop nvtop \
-      glxinfo flatpak zathura zathura-pdf-poppler pandoc lua-language-server paru
-    mk-paru
-    paru openrazer-git polychromatic f3d
+      xorg-setxkbmap flameshot ufw qutebrowser tree ripgrep curl mpv htop btop nvtop \
+      glxinfo zathura zathura-pdf-poppler pandoc paru element lua-language-server flatpak
+    mk-paru;paru openrazer-git polychromatic nsxiv f3d
     echo "You should run this: \"sudo gpasswd -a $USER plugdev\""
 }
 
 dev() {
     pacman -S \
       emacs clang boost boost-libs python-pip python iverilog ghdl rustup gunzip \
-      dmd rdmd dub ldc gopls xxd lua-language-server ventoy
+      dmd rdmd dub ldc gopls xxd lua-language-server deno ventoy qemu valgrind texlive-most
+    mk-paru;paru valkyrie vscode-langservers-extracted jdtls
     rustup update
     rustup component add rls rust-analysis rust-src
     curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.cargo/bin/rust-analyzer

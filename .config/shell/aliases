@@ -5,12 +5,16 @@
 # Aliases
 alias n="nvim"
 alias rm="$HOME/.local/bin/trash"
-alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME $@"
-alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
-alias gita="git add $@"
-alias gitc="git commit $@"
-alias gitp="git push $@"
 alias rmf="/usr/bin/rm"
+alias iv="nsxiv"
+alias oiv="/usr/bin/iv" #"https://sites.google.com/site/openimageio/home"
+alias dot="git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias plot="gnuplot"
+alias sudot="sudo git --git-dir=$HOME/.dotfiles --work-tree=$HOME"
+alias gita="git add"
+alias gitc="git commit"
+alias gitp="git push"
+#alias live-server="live-server $@ &"
 alias bf="brainfuck"
 alias rsc="rustc"
 alias rsup="rustup"
@@ -30,32 +34,44 @@ shopt -s expand_aliases
 # Functions
 xmodmap() {
     if [ -z "$1" ];then
-        sudo xmodmap $HOME/.config/X11/xmodmap
+        xmodmap $HOME/.config/X11/xmodmap &
     else
-        xmodmap $1
+        xmodmap $@
     fi
 }
 flameshot() {
     if [ -z "$1" ];then
         flameshot launcher
     else
-        flameshot "$1"
+        flameshot $@
     fi
 }
 so() {
     if [ -z "$1" ];then
         source "$HOME/.bashrc"
     else
-        source "$1"
+        source $@
     fi
+}
+ll() { 
+    ls $1 -AFoqv --color --group-directories-first | tail -n +2 && find -maxdepth 1 -type f -printf '%s\n' | awk '{total+=$1} END {print total bytes}';
+    # lists dirs then files in alphebetical order
+    # list .dirs first and .files last
+    # add a line at the end saying dir_amt:file_amt:total_size
+    #dirs=""
+    #files=""
+    #dir_amt=""
+    #file_amt=""
+    #total_size=""
+    #ls --color=auto --group-directories-first -AFl $@
 }
 # allow cd history
 # source = "https://unix.stackexchange.com/questions/157763/do-we-have-more-history-for-cd"
 #cd() {
 #[ "$((${DIRSTACKMAX##*[!0-9]*}0/10))" -gt 0 ] &&
-#        set -- "$@" "$DIRSTACK"               &&
+#        set -- $@ "$DIRSTACK"               &&
 #        DIRSTACK='pwd -P >&3; command cd'     ||
-#        { command cd "$@"; return; }
+#        { command cd $@; return; }
 #_q()    while   case "$1" in (*\'*) :   ;;      (*)
 #                ! DIRSTACK="$DIRSTACK '$2$1'"   ;;esac
 #        do      set -- "${1#*\'}" "$2${1%%\'*}'\''"
@@ -78,4 +94,5 @@ so() {
 #}
 
 # let shell scripts use these functions
-export -f so
+#export -f xmodmap flameshot so ll cd
+
