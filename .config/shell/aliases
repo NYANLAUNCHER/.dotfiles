@@ -94,5 +94,5 @@ ll() {
 #}
 
 # let shell scripts use these functions
-#export -f xmodmap flameshot so ll cd
+export -f ll
 

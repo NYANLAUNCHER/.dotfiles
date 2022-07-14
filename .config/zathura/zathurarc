@@ -1,9 +1,11 @@
 
+set first-page-column 2:1
+set pages-per-row 1
+
 map K zoom in
 map J zoom out
 map p scroll half-up
 map n scroll half-up
 map r reload
 map s print
-map <C-e> set pages-per-row
 

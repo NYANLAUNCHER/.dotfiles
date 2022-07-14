@@ -13,6 +13,7 @@ export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
 export PS1="[\u@\h \W]\$ "
 # set the max pwd history
 export DIRSTACKMAX="100"
+export GNUPLOT_LIB="/usr/share/gnuplot/5.4/gnuplotrc:$HOME/.config/gnuplot/gnuplot.conf"
 export nl="
 "
 

@@ -1,0 +1,27 @@
+x=2
+x/2
+help plot
+faraday 
+faraday/2
+4%f=3
+4%3
+4%3/2
+.l
+l
+list
+matrix
+clear;
+help matrix
+help
+82 * 88
+82^2
+82 * 2
+82(82)
+(x1 + x2/2)
+(x1 + x2)/(2)
+sqrt((-1 - 5)^2 + (5 - -3)^2)
+sqrt 52
+sqrt 36 + 64
+sqrt 36+64
+sqrt (36 + 64)
+sqrt 36 + sqrt 64
