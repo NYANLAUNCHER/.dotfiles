@@ -6,8 +6,8 @@
 #"https://github.com/pystardust/ani-cli"
 #"https://docs.anbox.io/userguide/install.html"
 
-# make sure paru is installed
-mk-paru() {
+# make sure paru is installed before using it
+paru() {
     if [ ! command -v paru &> /dev/null ];then
         echo "paru could not be found"
         exit
@@ -26,15 +26,15 @@ base() {
       neovim awesome picom git sxhkd kitty rofi xorg-xinit xorg-xset xorg-xev xorg-xmodmap \
       xorg-setxkbmap flameshot ufw qutebrowser tree ripgrep curl mpv htop btop nvtop \
       glxinfo zathura zathura-pdf-poppler pandoc paru element lua-language-server flatpak
-    mk-paru;paru openrazer-git polychromatic nsxiv f3d
-    echo "You should run this: \"sudo gpasswd -a $USER plugdev\""
+    paru openrazer-git polychromatic nsxiv f3d
+    gpasswd -a "$USER" plugdev
 }
 
 dev() {
     pacman -S \
-      emacs clang boost boost-libs python-pip python iverilog ghdl rustup gunzip \
-      dmd rdmd dub ldc gopls xxd lua-language-server deno ventoy qemu valgrind texlive-most
-    mk-paru;paru valkyrie vscode-langservers-extracted jdtls
+      clang boost boost-libs python python-pip iverilog ghdl rustup gunzip \
+      dmd rdmd dub gopls xxd lua-language-server deno docker ventoy qemu valgrind
+    paru valkyrie vscode-langservers-extracted jdtls miniconda
     rustup update
     rustup component add rls rust-analysis rust-src
     curl -L https://github.com/rust-analyzer/rust-analyzer/releases/latest/download/rust-analyzer-x86_64-unknown-linux-gnu.gz | gunzip -c - > $HOME/.cargo/bin/rust-analyzer
@@ -46,17 +46,16 @@ creation() {
 }
 
 math() {
-    pacman -S gnuplot libqalculate
+    pacman -S gnuplot libqalculate texlive-most
 }
 
 games() {
     pacman -S lutris wine winetricks steam steamcmd
-    mk-paru
     paru minecraft-launcher
-    echo "Before installing "steam, steamcmd", make sure the [multilib] section in /etc/pacman.conf is uncommented."
+    echo "Before installing \"steam, steamcmd\", make sure the [multilib] section in /etc/pacman.conf is uncommented."
     echo -e "The instructions can be found here, \033[34m\"https://wiki.archlinux.org/title/Official_repositories#multilib\"\033[0m."
     read -p "hit enter to continue: "
-    pacman -S steam steamcmd
+    pacman -S steam seamcmd
 }
 
 case $1 in
@@ -73,5 +72,5 @@ case $1 in
     \"sudo ./install.sh dev\",
     \"sudo ./install.sh creation\",
     \"sudo ./install.sh math\",
-    \"sudo ./install.sh games\""
+    \"sudo ./install.sh games\"" ;;
 esac

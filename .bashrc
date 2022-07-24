@@ -4,26 +4,15 @@
 
 [[ $- != *i* ]] && return
 
-# Set env vars
-export EDITOR="nvim"
-export INPUTRC="$HOME/.config/inputrc"
-export GOPATH="$HOME/.local/share/go"
-export PATH="$PATH:$HOME/.local/bin/:$GOPATH/bin:$HOME/.cargo/bin"
-# default prompt
-export PS1="[\u@\h \W]\$ "
-# set the max pwd history
-export DIRSTACKMAX="100"
-export GNUPLOT_LIB="/usr/share/gnuplot/5.4/gnuplotrc:$HOME/.config/gnuplot/gnuplot.conf"
-export nl="
-"
+source "$HOME/.config/shell/envars"
 
 colors() {
 	local fgc bgc vals seq0
 
-	printf "Color escapes are %s\n" '\e[${value};...;${value}m'
-	printf "Values 30..37 are \e[33mforeground colors\e[m\n"
-	printf "Values 40..47 are \e[43mbackground colors\e[m\n"
-	printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
+    printf "Color escapes are %s\n" '\e[${value};...;${value}m'
+    printf "Values 30..37 are \e[33mforeground colors\e[m\n"
+    printf "Values 40..47 are \e[43mbackground colors\e[m\n"
+    printf "Value  1 gives a  \e[1mbold-faced look\e[m\n\n"
 
 	# foreground colors
 	for fgc in {30..37}; do
@@ -143,11 +132,12 @@ if test -n "$KITTY_INSTALLATION_DIR" -a -e "$KITTY_INSTALLATION_DIR/shell-integr
 
 . "$HOME/.cargo/env"
 
-source "$HOME/.config/shell/conda"
 source "$HOME/.config/shell/aliases"
 source "$HOME/.config/shell/shortcuts"
+source "$HOME/.config/shell/conda.sh"
 
 LFCD="$HOME/.config/lf/scripts/lfcd.sh"
 if [ -f "$LFCD" ]; then
     source "$LFCD"
 fi
+
