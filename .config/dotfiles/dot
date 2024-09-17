@@ -1,9 +1,21 @@
 #!/bin/sh
-# link to a directory in $PATH
-df_dir=${DF_GIT_DIR:-"$HOME/.dotfiles"}
-df_origin=${DF_ORIGIN:-"git@github.com:NYANLAUNCHER/.dotfiles"}
-if [ "$1" = "clone" ]; then
-  [ ! -d "$df_dir" ] && git clone --bare "df_origin" "$df_dir"
-else
+# Link to a directory in $PATH
+df_dir="${DF_GIT_DIR:-$HOME/.dotfiles}"
+df_origin="${DF_ORIGIN:-git@github.com:NYANLAUNCHER/.dotfiles}"
+
+dot() {
   git --git-dir="$df_dir" --work-tree="$HOME" "$@"
+}
+
+if [ "$1" = "init" ]; then
+  if [ ! -d "$df_dir" ]; then
+    dot init
+    dot remote add origin "$df_origin"
+  fi
+else
+  if [ -n "$1" ]; then
+    dot "$@"
+  else
+    echo "No git command provided."
+  fi
 fi
