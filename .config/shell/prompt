@@ -1,0 +1,13 @@
+#!/bin/sh
+#! [ -d "$shcfg/shell/git-prompt" ] && git clone "https://github.com/magicmonty/bash-git-prompt.git" "$shcfg/git-prompt" --depth=1
+#GIT_PROMPT_ONLY_IN_REPO=0
+#GIT_PROMPT_THEME="Custom"
+#GIT_PROMPT_THEME_FILE="$shcfg/gitprompt.sh"
+#source "$shcfg/git-prompt/gitprompt.sh"
+
+#c_rst="\[\e[00m\]"
+#ps_time="\[\e[36m\][\t]$c_rst"
+#ps_host="\[\e[32m\][\u@\h]$c_rst"
+#ps_gitinfo=":[]$c_rst"
+#ps_cwd="\[\e[33m\]\w"
+#export PS1="\n$ps_time:$ps_host$ps_gitinfo\n$ps_cwd> $c_rst"

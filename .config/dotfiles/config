@@ -1,0 +1,13 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[filter "include-scripts"]
+    clean = "./filters/include_scripts.sh"
+    smudge = cat
+[remote "origin"]
+	url = git@github.com:NYANLAUNCHER/.dotfiles
+	fetch = +refs/heads/*:refs/remotes/origin/*
+[branch "main"]
+	remote = origin
+	merge = refs/heads/main

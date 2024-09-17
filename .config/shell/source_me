@@ -1,0 +1,12 @@
+#!/bin/sh
+shcfg="$HOME/.config/shell"
+
+# source my shell configs
+source "$shcfg/env" # always source first
+source "$shcfg/functions"
+source "$shcfg/integrations"
+source "$shcfg/shortcuts"
+source "$shcfg/aliases"
+source "$shcfg/prompt"
+source "$shcfg/keybinds"
+

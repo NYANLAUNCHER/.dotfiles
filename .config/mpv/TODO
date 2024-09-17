@@ -1,0 +1,13 @@
+# vim: filetype=notes
+
+- TODO:
+  - configure headless mode
+  - have everything controlled through tui
+  - have tui to manage and connect to instances
+    - allows to comment on yt vids
+  - have ability to clear output text from tui
+  - use h,j,k,l keys for navigation
+   - h = seek -10, l = seek 10
+   - j = seek -5, k = seek 5
+   - shift+h = prev chapter, shift+l = prev chapter
+  - 

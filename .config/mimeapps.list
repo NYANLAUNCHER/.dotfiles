@@ -1,0 +1,25 @@
+[Default Applications]
+text/html=org.gnome.Epiphany.desktop
+x-scheme-handler/http=org.gnome.Epiphany.desktop
+x-scheme-handler/https=org.gnome.Epiphany.desktop
+x-scheme-handler/about=brave-browser.desktop
+x-scheme-handler/unknown=brave-browser.desktop
+application/xhtml+xml=org.gnome.Epiphany.desktop
+x-scheme-handler/chrome=firefox-beta.desktop
+application/x-extension-htm=firefox-beta.desktop
+application/x-extension-html=firefox-beta.desktop
+application/x-extension-shtml=firefox-beta.desktop
+application/x-extension-xhtml=firefox-beta.desktop
+application/x-extension-xht=firefox-beta.desktop
+
+[Added Associations]
+x-scheme-handler/http=firefox.desktop;firefox-beta.desktop;org.gnome.Epiphany.desktop;
+text/html=firefox.desktop;firefox-beta.desktop;org.gnome.Epiphany.desktop;
+application/xhtml+xml=firefox.desktop;firefox-beta.desktop;org.gnome.Epiphany.desktop;
+x-scheme-handler/https=firefox.desktop;firefox-beta.desktop;org.gnome.Epiphany.desktop;
+x-scheme-handler/chrome=firefox-beta.desktop;
+application/x-extension-htm=firefox-beta.desktop;
+application/x-extension-html=firefox-beta.desktop;
+application/x-extension-shtml=firefox-beta.desktop;
+application/x-extension-xhtml=firefox-beta.desktop;
+application/x-extension-xht=firefox-beta.desktop;

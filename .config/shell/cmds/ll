@@ -1,0 +1,14 @@
+#!/bin/bash
+
+if command -v lsd &> /dev/null; then
+    if printf '%s\0' "${@}" | grep -Fxqz -- '--tree'; then
+        lsd -lF -1 --blocks='permission,user,group,size,date,name' --color='always' --icon-theme='fancy' \
+            --date='+%d %b %y %H:%I' --sort='size' --group-dirs='first' --header -v $@
+    else
+        lsd -lAF -1 --blocks='permission,user,group,size,date,name' --color='always' --icon-theme='fancy' \
+            --date='+%d %b %y %H:%I' --sort='size' --group-dirs='first' --header -v $@
+    fi
+else
+    ls $@ -lAFoqv --color=always --group-directories-first
+fi
+

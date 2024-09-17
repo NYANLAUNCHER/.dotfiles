@@ -1,0 +1,9 @@
+#!/bin/sh
+# link to a directory in $PATH
+df_dir=${DF_GIT_DIR:-"$HOME/.dotfiles"}
+df_origin=${DF_ORIGIN:-"git@github.com:NYANLAUNCHER/.dotfiles"}
+if [ "$1" = "clone" ]; then
+  [ ! -d "$df_dir" ] && git clone --bare "df_origin" "$df_dir"
+else
+  git --git-dir="$df_dir" --work-tree="$HOME" "$@"
+fi

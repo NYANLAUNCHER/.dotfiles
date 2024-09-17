@@ -1,0 +1,15 @@
+obs-studio/
+nautilus/
+BraveSoftware/
+blender/
+libreoffice/
+solvespace/
+dconf/
+yelp/
+simple-scan/
+ibus/
+menus/
+gnome*
+goa*
+gtk*
+.gsd-keyboard.settings-ported
