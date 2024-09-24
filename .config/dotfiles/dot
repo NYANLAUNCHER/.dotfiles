@@ -2,9 +2,10 @@
 # Link to a directory in $PATH
 df_dir="${DF_GIT_DIR:-$HOME/.dotfiles}"
 df_origin="${DF_ORIGIN:-git@github.com:NYANLAUNCHER/.dotfiles}"
+df_wt="${DF_WORK_TREE:-$HOME}"
 
 dot() {
-  git --git-dir="$df_dir" --work-tree="$HOME" "$@"
+  git --git-dir="$df_dir" --work-tree="$df_wt" "$@"
 }
 
 if [ "$1" = "init" ]; then

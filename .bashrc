@@ -25,22 +25,18 @@ nv="$cfg/nvim"
 nvi="$nv/init.lua"
 nvd="$XDG_DATA_HOME/nvim"
 # }}}
-
 # Aliases {{{
 alias e="nvim"
 alias ll="ls -hlA"
 alias df="df -h"
 # }}}
-
 # Keybinds {{{
 bind -x '"\C-j":"ll"'
 bind '"\C-b": backward-word'
 # }}}
-
 # Prompt {{{
 . "$XDG_CONFIG_HOME/bash/prompt" &> /dev/null
 # }}}
-
 # Integrations {{{
 set -a
 . "$XDG_CONFIG_HOME/integrations.sh" &> /dev/null
