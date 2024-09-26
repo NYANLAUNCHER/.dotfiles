@@ -27,8 +27,8 @@ nvd="$XDG_DATA_HOME/nvim"
 # }}}
 
 # Aliases {{{
-alias e="$EDITOR"
-alias o="$OPENER"
+alias e="${EDITOR:-nvim}"
+alias o="${OPENER:-xdg-open}""
 alias ll="ls -hlA"
 alias df="df -h"
 # }}}
