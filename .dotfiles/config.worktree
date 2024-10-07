@@ -1,0 +1,6 @@
+[core]
+	bare = true
+	sparseCheckout = false
+	sparseCheckoutCone = false
+[index]
+	sparse = false

@@ -35,14 +35,7 @@ LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 # Dotfiles Integrations
 DF_WORK_TREE="$HOME"
 DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
-dot() {
-  dot="git --work-tree=$DF_WORK_TREE --git-dir=$DF_GIT_DIR"
-  if [ $1 = "init" ]; then
-    echo "init"
-  else
-    $dot $@
-  fi
-}
+alias dot="git --work-tree=$DF_WORK_TREE/.. --git-dir=$DF_GIT_DIR"
 set +a # disable auto-export of variables
 #}}}
 
