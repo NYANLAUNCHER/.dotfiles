@@ -1,0 +1,3 @@
+[submodule ".config/nvim/colors/nordic.nvim"]
+	path = .config/nvim/colors/nordic.nvim
+	url = https://github.com/AlexvZyl/nordic.nvim

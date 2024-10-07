@@ -2,16 +2,16 @@
 [include]
     path = ./credentials.ini
 [user]
-	name = markiep
-	email = purcellmarkie@proton.me
+    name = markiep
+    email = purcellmarkie@proton.me
 [init]
-	defaultBranch = main
+    defaultBranch = main
 [push]
     default = current 
 [alias]
     # list all aliases
     aliases = !git config --list | grep 'alias\\.' | sed 's/alias\\.\\([^=]*\\)=\\(.*\\)/\\1\\ \t => \\2/' | sort
-	cloner = clone --recursive
+    cloner = clone --recursive
     # print the root git directory
     root = rev-parse --show-toplevel
     # commits all changes; treat it just like git commit
@@ -25,11 +25,11 @@
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [submodule]
-	ignore = dirty
+    ignore = dirty
 [safe]
-	directory = /opt/flutter
+    directory = /opt/flutter
 [filter "lfs"]
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
-	clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f

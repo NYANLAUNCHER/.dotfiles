@@ -1,5 +1,5 @@
 #!/bin/sh
-function yz() {
+yz() {
     local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
     yazi "$@" --cwd-file="$tmp"
     if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -7,4 +7,4 @@ function yz() {
     fi
     rm -f -- "$tmp"
 }
-yz $@
+export -f yz

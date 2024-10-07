@@ -1,7 +1,7 @@
-# My environment variables
+# Environment Variables {{{
 set -a # auto-export variables
 # Default Prompt
-PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\]"
+PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
 
 # XDG Base dirs
 XDG_CONFIG_HOME="$HOME/.config"
@@ -31,4 +31,53 @@ CXX="/usr/bin/g++"
 # Set config dirs
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+
+# Dotfiles Integrations
+DF_WORK_TREE="$HOME"
+DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
+dot() {
+  dot="git --work-tree=$DF_WORK_TREE --git-dir=$DF_GIT_DIR"
+  if [ $1 = "init" ]; then
+    echo "init"
+  else
+    $dot $@
+  fi
+}
 set +a # disable auto-export of variables
+#}}}
+
+# Shortcuts {{{
+cfg="$XDG_CONFIG_HOME"
+dl="$XDG_DOWNLOAD_DIR"
+
+media="$XDG_DOCUMENTS_DIR/.media"
+imgs="$media/imgs"
+vids="$media/vids"
+audio="$media/audio"
+music="$audio/music"
+doc="$media/doc"
+study="$doc/study"
+
+src="$HOME/src"
+sl="$src/local"
+sr="$src/repos"
+st="$src/template"
+
+nt="$XDG_DOCUMENTS_DIR/.notes"
+ntd="$nt/dev"
+nto="$nt/org"
+todo="$nto/TODO"
+
+nv="$cfg/nvim"
+nvi="$nv/init.lua"
+nvd="$XDG_DATA_HOME/nvim"
+# }}}
+
+# Aliases {{{
+alias e="${EDITOR:-nvim}"
+alias o="${OPENER:-xdg-open}"
+alias todo="$EDITOR $todo"
+alias ll="ls -hlA"
+alias df="df -h"
+# }}}
+

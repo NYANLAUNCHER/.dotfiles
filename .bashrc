@@ -1,38 +1,3 @@
-# Shortcuts {{{
-cfg="$XDG_CONFIG_HOME"
-dl="$HOME/tmp"
-
-media="$HOME/media"
-imgs="$media/imgs"
-vids="$media/vids"
-audio="$media/audio"
-music="$audio/music"
-doc="$media/doc"
-study="$doc/study"
-
-src="$HOME/src"
-sl="$src/local"
-sr="$src/repos"
-st="$src/template"
-
-nt="$HOME/notes"
-ntd="$nt/dev"
-nto="$nt/org"
-todo="$nto/TODO"
-alias todo="$EDITOR $todo"
-
-nv="$cfg/nvim"
-nvi="$nv/init.lua"
-nvd="$XDG_DATA_HOME/nvim"
-# }}}
-
-# Aliases {{{
-alias e="${EDITOR:-nvim}"
-alias o="${OPENER:-xdg-open}""
-alias ll="ls -hlA"
-alias df="df -h"
-# }}}
-
 # Keybinds {{{
 bind -x '"\C-j":"ll"'
 bind '"\C-b": backward-word'
@@ -44,7 +9,6 @@ bind '"\C-b": backward-word'
 
 # Integrations {{{
 set -a
-. "$XDG_CONFIG_HOME/integrations.sh" &> /dev/null
 ANDROID_HOME="$XDG_DATA_HOME/android"
 CARGO_HOME="$XDG_DATA_HOME/cargo"
 DUB_HOME="$XDG_DATA_HOME/dub"
@@ -57,4 +21,4 @@ _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 PGDATA="$XDG_DATA_HOME/postgres"
 RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 set +a
-# }}}
+
