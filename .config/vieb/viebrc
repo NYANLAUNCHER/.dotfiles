@@ -1,14 +1,19 @@
 " vim: ft=vim
 " TODO:
+" - fix run.sh
+" - fix erwic/mkerwic.sh
+" - support shell environment variables in vieb cmd prompt
 " - <C-o> previous scroll percentage
 " - have keybinds to select different scroll frames/buffers to scroll
+" - create flake.nix
 
 " Settings
 "set adblocker=update
 set downloadmethod=confirm
 set searchengine="https://search.brave.com/search?q=%s"
-set tabclosefocus=left
-set tabnewposition=right
+" go through tabs from left to right
+set tabnewposition=left
+set tabclosefocus=right
 set tabreopenposition=previous
 set replacespecial=always
 set suggestcommands=15
@@ -18,10 +23,12 @@ set timeout=true
 set timeoutlen=6000
 
 " Commands
+" use 'command!' to overwrite any existing cmds
 command! mpv <:!mpv "<useCurrentUrl>">
-"command session-init
-"command session-save
-"command session-load
+command! session-init <toCommandMode>
+" stores sessions in "$XDG_DATA_DIR/vieb/sessions/<name>"
+" if empty will just use "$XDG_DATA_DIR/vieb/"
+command! session-load <toCommandMode>
 
 " Mappings
 map <C-[> <toNormalMode><:nohlsearch>
@@ -83,8 +90,8 @@ smap <C-w> <C-S-Left><BS>
 " }}}
 " Tabs & Windows {{{
 nmap e <toExploreMode><End>
-nmap <C-s> <toExploreMode>site:<useCurrentDomain>
-nmap <C-S> <toExploreMode>site:<useCurrentUrl>
+"nmap <C-s> <toExploreMode>site:<useCurrentDomain>
+"nmap <C-S> <toExploreMode>site:<useCurrentUrl>
 nmap t <:tabnew>
 nmap T <openNewTabWithCurrentUrl><CR>
 nmap E <openNewTabWithCurrentUrl>
@@ -99,4 +106,3 @@ pmap L <scrollRight>
 pmap c<Any> <p.storePos> "'Capture' position
 pmap '<Any> <p.restorePos>
 " }}}
-

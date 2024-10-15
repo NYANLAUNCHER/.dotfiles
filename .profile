@@ -31,11 +31,6 @@ CXX="/usr/bin/g++"
 # Set config dirs
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 LESSHISTFILE="$XDG_CACHE_HOME/less/history"
-
-# Dotfiles Integrations
-DF_WORK_TREE="$HOME"
-DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
-alias dot="git --work-tree=$DF_WORK_TREE/.. --git-dir=$DF_GIT_DIR"
 set +a # disable auto-export of variables
 #}}}
 
@@ -67,10 +62,18 @@ nvd="$XDG_DATA_HOME/nvim"
 # }}}
 
 # Aliases {{{
-alias e="${EDITOR:-nvim}"
-alias o="${OPENER:-xdg-open}"
+alias e="$EDITOR"
+alias o="$OPENER"
 alias todo="$EDITOR $todo"
 alias ll="ls -hlA"
 alias df="df -h"
+# Dotfiles
+export DF_WORK_TREE="$HOME/tmp"
+export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
+alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
 # }}}
 
+# Integrations {{{
+# TODO:
+# source all files with path .config/**/integrations.sh
+source ~/tmp/.config/vieb/integrations.sh

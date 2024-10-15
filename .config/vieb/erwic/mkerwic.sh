@@ -1,5 +1,9 @@
 #!/bin/sh
-# Creates an empty erwic container
+# Creates an erwic container,
+# containing the files: run.sh, erwic.json, <cont_name>.desktop
+# Features:
+# - run.sh manages the desktop file link to ~/.local/applications
+# - run.sh tries to download an icon for the desktop file
 # Usage: ./mkerwic.sh dir_name [container_name url]
 [ ! -n "$1" ] && exit 1
 container_name="${2:-enter_container_name_here}"

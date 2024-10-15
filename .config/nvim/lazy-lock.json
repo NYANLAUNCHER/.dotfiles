@@ -1,4 +1,5 @@
 {
+  "autolist.nvim": { "branch": "main", "commit": "5f70a5f99e96c8fe3069de042abd2a8ed2deb855" },
   "cmp-buffer": { "branch": "main", "commit": "3022dbc9166796b644a841a02de8dd1cc1d311fa" },
   "cmp-css-variables": { "branch": "main", "commit": "9a8fdbffcd17cee18714ad6b9f9c8cddabe1ad1a" },
   "cmp-nvim-lsp": { "branch": "main", "commit": "5af77f54de1b16c34b23cba810150689a3a90312" },

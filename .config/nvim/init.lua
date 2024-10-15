@@ -1,18 +1,6 @@
 local vim=vim
 -- Stand-alone neovim config file with all my defaults (or something like that)
 
---TODO:
--- fix "$nv/after/syntax/gcode.vim"
--- fix clipboard
---- yanking text always copies it to system clipboard as well as the local instance clipboard
--- add better pair matching functionality to replace:
---- [matchit](https://github.com/neovim/neovim/blob/master/runtime/pack/dist/opt/matchit/plugin/matchit.vim) &
---- [vim-surround](https://github.com/tpope/vim-surround)
-
--- Language Configs: (in order)
---- Lua, C, Rust, Zig
-
-
 -- Options: (:help lua-guide-options) {{{
 vim.cmd('filetype plugin indent on')
 vim.cmd('packadd! matchit')
