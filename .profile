@@ -82,6 +82,7 @@ if [ ! -d $DF_GIT_DIR ]; then
     git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
     dot checkout
 fi
+. $DF_WORK_TREE/.config/dotfiles/init.sh
 dot status
 }
 # }}}
