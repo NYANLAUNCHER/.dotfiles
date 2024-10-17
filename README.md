@@ -12,5 +12,21 @@ git --work-tree="$HOME" --git-dir="$HOME/.dotfiles" checkout
 ## Using sparse-checkout
 ```sh
 cd
-dot sparse-checkout set README.md
+dot sparse-checkout reapply
+```
+
+## Notes
+```sh
+# all my shell scripts assume these are set:
+# XDG Base dirs
+export XDG_CONFIG_HOME="..."
+export XDG_CACHE_HOME="..."
+export XDG_DATA_HOME="..."
+export XDG_STATE_HOME="..."
+# dotfiles
+export DF_WORK_TREE="..."
+export DF_GIT_DIR="..."
+# default programs
+export EDITOR="nvim"
+# just make sure that .profile is sourced
 ```

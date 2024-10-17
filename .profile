@@ -83,6 +83,7 @@ if [ ! -d $DF_GIT_DIR ]; then
     dot checkout
 fi
 . $DF_WORK_TREE/.config/dotfiles/init.sh
+dot sparse-checkout reapply
 dot status
 }
 # }}}

@@ -4,7 +4,7 @@
 
 rm -rf $DF_GIT_DIR/config $DF_GIT_DIR/info $DF_GIT_DIR/hooks $DF_GIT_DIR/filters 2>/dev/null
 
-ln -s $(realpath $DF_WORK_TREE/.config/dotfiles/config) $DF_GIT_DIR/config
-ln -s $(realpath $DF_WORK_TREE/.config/dotfiles/info) $DF_GIT_DIR/info
-ln -s $(realpath $DF_WORK_TREE/.config/dotfiles/hooks) $DF_GIT_DIR/hooks
-ln -s $(realpath $DF_WORK_TREE/.config/dotfiles/filters) $DF_GIT_DIR/filters
+ln -s $(realpath $XDG_CONFIG_HOME/dotfiles/config) $DF_GIT_DIR/config
+ln -s $(realpath $XDG_CONFIG_HOME/dotfiles/info) $DF_GIT_DIR/info
+ln -s $(realpath $XDG_CONFIG_HOME/dotfiles/hooks) $DF_GIT_DIR/hooks
+ln -s $(realpath $XDG_CONFIG_HOME/dotfiles/filters) $DF_GIT_DIR/filters
