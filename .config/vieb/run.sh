@@ -2,6 +2,8 @@
 # Wrapper around vieb adds:
 # --session="<path>" - sets --datafolder=<dir> and exports VIEB_DATAFOLDER=<dir>
 # if <path> doesn't start with "./" or "/" it is a path in $VIEB_SESSIONS_DIR
+# If a url string is provided it opens in a "one-off" tab, basically creating a session for it,
+# unless "-n" is provided
 . "$XDG_CONFIG_HOME/vieb/integrations.sh"
 [ -z "$VIEB_SESSIONS_DIR" ] && echo "Error: \$VIEB_SESSIONS_DIR must be set. Check $XDG_CONFIG_HOME/vieb/integrations.sh"; exit 1
 

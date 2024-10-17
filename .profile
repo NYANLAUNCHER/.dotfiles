@@ -65,12 +65,25 @@ nvd="$XDG_DATA_HOME/nvim"
 alias e="$EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
-alias ll="ls -hlA"
+alias ll="ls --color=auto -hlA"
+alias grep="grep --color=auto"
+alias hist="history"
 alias df="df -h"
+alias ytfzf-music="ytfzf -m --mpv-flags='--no-video'"
+alias ytfzf-odysee="ytfzf -cO"
 # Dotfiles
 export DF_WORK_TREE="$HOME/tmp"
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
 alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
+dot-init() {
+# clone the repo if it doesn't already exist
+if [ ! -d $DF_GIT_DIR ]; then
+    cd "$DF_WORK_TREE"
+    git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
+    dot checkout
+fi
+dot status
+}
 # }}}
 
 # Integrations {{{
