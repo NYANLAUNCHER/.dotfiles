@@ -1,10 +1,26 @@
+# Dotfiles {{{
+export DF_WORK_TREE="$HOME/tmp" # This is where all the dot files reside
+export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
+alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
+dot_init() {
+# clone the repo if it doesn't already exist
+if [ ! -d $DF_GIT_DIR ]; then
+    cd "$DF_WORK_TREE"
+    git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
+    dot checkout
+fi
+. $XDG_CONFIG_HOME/dotfiles/init.sh
+dot sparse-checkout init --no-cone
+dot status
+}
+# }}}
 # Environment Variables {{{
 set -a # auto-export variables
-# Default Prompt
-PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
+# Default prompt (posix sh)
+PS1="[$(pwd)]$ "
 
 # XDG Base dirs
-XDG_CONFIG_HOME="$HOME/.config"
+XDG_CONFIG_HOME="$DF_WORK_TREE/.config"
 XDG_CACHE_HOME="$HOME/.cache"
 XDG_DATA_HOME="$HOME/.local/share"
 XDG_STATE_HOME="$HOME/.local/state"
@@ -13,13 +29,7 @@ XDG_STATE_HOME="$HOME/.local/state"
 . "$XDG_CONFIG_HOME/user-dirs.dirs"
 
 # paths in the user home dir
-USER_PATH="$HOME/.local/bin:$XDG_CONFIG_HOME/shell/cmds"
-if [ -d $CARGO_HOME ];then
-    USER_PATH="$USER_PATH:$CARGO_HOME/bin"
-elif [ -d ~/.cargo ];then
-    USER_PATH="$USER_PATH:~/.cargo/bin"
-fi
-PATH="$USER_PATH:/usr/bin:/usr/sbin:/bin:/sbin:$PATH"
+PATH="$HOME/.local/bin:$DF_WORK_TREE/.local/bin:$XDG_CONFIG_HOME/shell/cmds:$PATH"
 
 # Set default programs
 EDITOR="nvim"
@@ -33,7 +43,6 @@ INPUTRC="$XDG_CONFIG_HOME/inputrc"
 LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 set +a # disable auto-export of variables
 #}}}
-
 # Shortcuts {{{
 cfg="$XDG_CONFIG_HOME"
 dl="$XDG_DOWNLOAD_DIR"
@@ -60,35 +69,35 @@ nv="$cfg/nvim"
 nvi="$nv/init.lua"
 nvd="$XDG_DATA_HOME/nvim"
 # }}}
-
 # Aliases {{{
 alias e="$EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
+alias z="zathura"
 alias ll="ls --color=auto -hlA"
 alias grep="grep --color=auto"
 alias hist="history"
 alias df="df -h"
 alias ytfzf-music="ytfzf -m --mpv-flags='--no-video'"
 alias ytfzf-odysee="ytfzf -cO"
-# Dotfiles
-export DF_WORK_TREE="$HOME/tmp"
-export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
-alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
-dot-init() {
-# clone the repo if it doesn't already exist
-if [ ! -d $DF_GIT_DIR ]; then
-    cd "$DF_WORK_TREE"
-    git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
-    dot checkout
-fi
-. $DF_WORK_TREE/.config/dotfiles/init.sh
-dot sparse-checkout reapply
-dot status
-}
 # }}}
-
 # Integrations {{{
 # TODO:
 # source all files with path .config/**/integrations.sh
-source ~/tmp/.config/vieb/integrations.sh
+. $XDG_CONFIG_HOME/vieb/integrations.sh
+
+set -a
+ANDROID_HOME="$XDG_DATA_HOME/android"
+CARGO_HOME="$XDG_DATA_HOME/cargo"
+PATH="$CARGO_HOME/bin:$PATH"
+DUB_HOME="$XDG_DATA_HOME/dub"
+GOPATH="$XDG_DATA_HOME/go"
+GRADLE_USER_HOME="$XDG_DATA_HOME/gradle"
+# see: https://docs.julialang.org/en/v1/manual/environment-variables/
+JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia"
+_JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
+# initdb --locale=C.UTF-8 --encoding=UTF8 -D "$PGDATA" --data-checksums
+PGDATA="$XDG_DATA_HOME/postgres"
+RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+set +a
+
