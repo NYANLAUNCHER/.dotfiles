@@ -81,11 +81,16 @@ alias df="df -h"
 alias ytfzf-music="ytfzf -m --mpv-flags='--no-video'"
 alias ytfzf-odysee="ytfzf -cO"
 # }}}
+# Keybinds {{{
+bind -x '"\C-j":"ll"'
+bind '"\C-b": backward-word'
+# }}}
 # Integrations {{{
 # TODO:
 # source all files with path .config/**/integrations.sh
-. $XDG_CONFIG_HOME/vieb/integrations.sh
+#. .config/**/integrations.sh
 
+# Environment Variables
 set -a
 ANDROID_HOME="$XDG_DATA_HOME/android"
 CARGO_HOME="$XDG_DATA_HOME/cargo"
