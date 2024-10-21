@@ -1,5 +1,5 @@
 # Dotfiles {{{
-export DF_WORK_TREE="$HOME/tmp" # This is where all the dot files reside
+export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
 alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
 dot_init() {
