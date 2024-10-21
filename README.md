@@ -5,6 +5,7 @@ This is a mono-repo for my dotfiles
 ```sh
 cd
 git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" .dotfiles
+. .profile # source .profile
 dot checkout # alias "dot" is defined in .profile
 dot_init # function in .profile; creates the proper symlnks
 # Enable sparse-checkout (optional)
