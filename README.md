@@ -5,7 +5,7 @@ This is a mono-repo for my dotfiles
 ```sh
 cd
 git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" .dotfiles
-git --work-tree=./ --git-dir=.dotfiles/ checkout
+git --work-tree=./ --git-dir=.dotfiles/ checkout -f
 . .profile && dot_init # defined in .profile
 # Enable sparse-checkout (optional)
 dot sparse-checkout reapply
