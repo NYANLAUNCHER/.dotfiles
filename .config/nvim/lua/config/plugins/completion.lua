@@ -102,6 +102,7 @@ return {
     cmp.event:on('confirm_don', cmp_autopairs.on_confirm_done {map_char = {tex = ''}})
   end
 },
+--[[
 {
  'gaoDean/autolist.nvim',
  ft = {
@@ -138,4 +139,5 @@ return {
    vim.keymap.set('v', 'd', 'd<cmd>AutolistRecalculate<cr>')
  end,
 },
+]]
 }

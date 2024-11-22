@@ -1,56 +1,30 @@
 #!/bin/sh
 # Wrapper around vieb adds:
-# --session="<path>" - sets --datafolder=<dir> and exports VIEB_DATAFOLDER=<dir>
-# if <path> doesn't start with "./" or "/" it is a path in $VIEB_SESSIONS_DIR
-# If a url string is provided it opens in a "one-off" tab, basically creating a session for it,
-# unless "-n" is provided
-. "$XDG_CONFIG_HOME/vieb/integrations.sh"
-[ -z "$VIEB_SESSIONS_DIR" ] && echo "Error: \$VIEB_SESSIONS_DIR must be set. Check $XDG_CONFIG_HOME/vieb/integrations.sh"; exit 1
+# --session="<path>" sets --datafolder=<dir>
+# If <path> doesn't start with "./" or "/" it is a path in $VIEB_SESSIONS_DIR
+# "-t"|"--temp" creates a temporary session 
+. "$XDG_CONFIG_HOME/vieb/integrations.sh" # must be sourced
 
-# Check if VIEB_SESSION_DIR is set
-if [ -z "$VIEB_SESSION_DIR" ]; then
-  echo "Error: VIEB_SESSION_DIR is not set."
-  exit 1
+args="$*" # gets parsed into vieb compatible args
+session_dir="$VIEB_DATAFOLDER" # the default session directory
+
+# if --session exists
+session="$(grep -oP '(?<=--session=)[^\s]+' | tail -n 1)" # input from --session
+echo "session = '$session'"
+if [ "${string#./}" != "$string" ] || [ "${string#/}" != "$string" ]; then
+    session_dir="$session"
+else
+    [ -z "$VIEB_SESSIONS_DIR" ] && echo "Error: \$VIEB_SESSIONS_DIR must be set. Check $XDG_CONFIG_HOME/vieb/integrations.sh" && exit 1
+    session_dir="$VIEB_SESSIONS_DIR/$session"
 fi
 
-session_path=""
-datafolder_flag=""
+# if "-t"|"--temp" exists
+(echo "$args" | sed -E '/\b(-t|--temp)\b/!q1; s/\b(-t|--temp)\b/ /g') && temp_session="$(mktemp -d)"
 
-# Parse command-line arguments
-for arg in "$@"; do
-  case $arg in
-    --session=*)
-      session_path="${arg#*=}"
-      ;;
-    --datafolder=*)
-      datafolder_flag=1
-      ;;
-    *)
-      # Pass through other arguments unchanged
-      other_args="$other_args $arg"
-      ;;
-  esac
-done
+args="$args --datafolder=\"${temp_session:-$session_dir}\""
 
-# Check for session path
-if [ -z "$session_path" ]; then
-  echo "Error: No session path provided."
-  exit 1
-fi
+# vieb uses the original vieb cmd since it is in a sh script
+echo "vieb $args"
+#eval "vieb $args"
 
-# Prepend VIEB_SESSION_DIR if session_path doesn't start with "./" or "/"
-if ! echo "$session_path" | grep -qE '^(./|/)' ; then
-  session_path="$VIEB_SESSION_DIR/$session_path"
-fi
-
-# Throw an error if both flags are present
-if [ "$datafolder_flag" ]; then
-  echo "Error: You can only specify one of --session or --datafolder."
-  exit 1
-fi
-
-# Construct the command
-command="vieb --datafolder=\"$session_path\"$other_args"
-
-# Execute the command
-eval "$command"
+[ -d "$temp_session" ] && rm -rf "$temp_session" # remove the temporary session once vieb is closed

@@ -13,7 +13,8 @@ dot sparse-checkout reapply
 
 ## Notes
 ```sh
-# all my shell scripts assume these are set:
+# All my shell scripts assume `~/.profile` is a file,
+# and that these environment variables are set in .profile:
 # XDG Base dirs
 export XDG_CONFIG_HOME="..."
 export XDG_CACHE_HOME="..."
@@ -23,6 +24,8 @@ export XDG_STATE_HOME="..."
 export DF_WORK_TREE="..."
 export DF_GIT_DIR="..."
 # default programs
-export EDITOR="nvim"
-# just make sure that .profile is sourced
+export EDITOR="..."
+
+# all paths: "$XDG_CONFIG_HOME/<prog>/integrations.sh" are sourced; where <prog> is a single (sub)dir
+# "$XDG_CONFIG_HOME/<prog>/run.sh" gets aliased as <prog>
 ```

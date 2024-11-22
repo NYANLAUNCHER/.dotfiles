@@ -1,3 +1,4 @@
+# ~/.profile must exist
 # Dotfiles {{{
 export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
@@ -7,7 +8,7 @@ dot_init() {
 if [ ! -d $DF_GIT_DIR ]; then
     cd "$DF_WORK_TREE"
     git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
-    dot checkout
+    dot checkout -f
 fi
 . $XDG_CONFIG_HOME/dotfiles/init.sh
 dot sparse-checkout init --no-cone
@@ -73,24 +74,33 @@ nvd="$XDG_DATA_HOME/nvim"
 alias e="$EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
-alias z="zathura"
 alias ll="ls --color=auto -hlA"
+#function ll() {
+#    find "${@:-.}" -maxdepth 1 \( -type d -name '.*' -or -type f -name '.*' \) -print -o -type d -print -o -type f -print | sort
+#}
 alias grep="grep --color=auto"
-alias hist="history"
+alias info="info --vi-keys"
 alias df="df -h"
+alias hist="history"
+alias z="zathura"
 alias ytfzf-music="ytfzf -m --mpv-flags='--no-video'"
 alias ytfzf-odysee="ytfzf -cO"
 # }}}
-# Keybinds {{{
-bind -x '"\C-j":"ll"'
-bind '"\C-b": backward-word'
-# }}}
 # Integrations {{{
-# TODO:
-# source all files with path .config/**/integrations.sh
-#. .config/**/integrations.sh
+# source all files with path .config/<dir>/integrations.sh
+find "$XDG_CONFIG_HOME" -mindepth 2 -maxdepth 2 -type f -name 'integrations.sh' | while read -r script; do
+    . "$script"
+done
+# alias all files .config/<prog>/run.sh as <prog>
+temp_alias_file=$(mktemp) # keeps aliases in current shell instead of a subshell
+find "$XDG_CONFIG_HOME" -mindepth 2 -maxdepth 2 -type f -name 'run.sh' | while read -r script; do
+    prog_name=$(basename "$(dirname "$script")")
+    echo "alias $prog_name='$script'" >> "$temp_alias_file"
+done
+[ -s "$temp_alias_file" ] && . "$temp_alias_file"
+rm -f "$temp_alias_file"
 
-# Environment Variables
+# This crap doesn't belong in my home dir
 set -a
 ANDROID_HOME="$XDG_DATA_HOME/android"
 CARGO_HOME="$XDG_DATA_HOME/cargo"
@@ -105,4 +115,3 @@ _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 PGDATA="$XDG_DATA_HOME/postgres"
 RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 set +a
-
