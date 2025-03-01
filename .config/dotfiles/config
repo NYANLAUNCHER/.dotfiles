@@ -10,3 +10,5 @@
 	merge = refs/heads/main
 [extensions]
 	worktreeConfig = true
+[lfs]
+	repositoryformatversion = 0

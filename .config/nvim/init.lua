@@ -1,5 +1,5 @@
 local vim=vim
--- Stand-alone neovim config file with all my defaults (or something like that)
+local util=require('config.util')
 
 -- Options: (:help lua-guide-options) {{{
 vim.cmd('filetype plugin indent on')
@@ -105,7 +105,9 @@ keymap('n', ',o', 'o<ESC>')
 keymap('n', ',O', 'O<ESC>')
 
 -- Use Sys Cliboard
-vim.g.clipboard = 'unamedplus'
+--vim.g.clipboard = vim.opt.clipboard:get() .. 'unamedplus'
+vim.notify(util.tableToString(vim.opt.clipboard:get()), vim.log.levels.INFO)
+vim.notify(util.tableToString({foo={bar="baz"}}), vim.log.levels.INFO)
 keymap('n', '<leader>Y', '"+yg_')
 keymap({'n', 'v'}, '<leader>y', '"+y')
 keymap({'n', 'v'}, '<leader>p', '"+p')

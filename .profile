@@ -3,6 +3,8 @@
 export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
 alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
+# adds all updates to tracked files (just adds, doesn't commit)
+alias dot-update="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR add -u $DF_WORK_TREE"
 dot_init() {
 # clone the repo if it doesn't already exist
 if [ ! -d $DF_GIT_DIR ]; then
@@ -45,6 +47,7 @@ LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 set +a # disable auto-export of variables
 #}}}
 # Shortcuts {{{
+set -a
 cfg="$XDG_CONFIG_HOME"
 dl="$XDG_DOWNLOAD_DIR"
 
@@ -69,15 +72,22 @@ todo="$nto/TODO"
 nv="$cfg/nvim"
 nvi="$nv/init.lua"
 nvd="$XDG_DATA_HOME/nvim"
+set +a
 # }}}
 # Aliases {{{
 alias e="$EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
-alias ll="ls --color=auto -hlA"
-#function ll() {
-#    find "${@:-.}" -maxdepth 1 \( -type d -name '.*' -or -type f -name '.*' \) -print -o -type d -print -o -type f -print | sort
-#}
+alias ll="ls -hlA --group-directories-first"
+function fn_yazi() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
+		builtin cd -- "$cwd"
+	fi
+	rm -f -- "$tmp"
+}
+alias y="fn_yazi"
 alias grep="grep --color=auto"
 alias info="info --vi-keys"
 alias df="df -h"
