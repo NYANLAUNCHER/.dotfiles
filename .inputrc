@@ -1,0 +1,3 @@
+"\C-j":"\C-k \C-u ll \n"
+"\C-o":"\C-k \C-u pwd \n"
+"\C-b":backward-word

@@ -88,6 +88,10 @@ function fn_yazi() {
 	rm -f -- "$tmp"
 }
 alias y="fn_yazi"
+function fn_nshrun() {
+    nix-shell -p "$1" --command "$@"
+}
+alias nsh-run="fn_nshrun"
 alias grep="grep --color=auto"
 alias info="info --vi-keys"
 alias df="df -h"
