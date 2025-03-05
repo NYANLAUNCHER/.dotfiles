@@ -1,21 +1,23 @@
 # ~/.profile must exist
+stty -ixon
 # Dotfiles {{{
 export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
 alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
 # adds all changes to tracked files (just adds doesn't commit)
 alias dot-track="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR add -u $DF_WORK_TREE"
-dot_init() {
-# clone the repo if it doesn't already exist
-if [ ! -d $DF_GIT_DIR ]; then
-    cd "$DF_WORK_TREE"
-    git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
-    dot checkout -f
-fi
-. $XDG_CONFIG_HOME/dotfiles/init.sh
-dot sparse-checkout init --no-cone
-dot status
+function fn_dot_init() {
+    # clone the repo if it doesn't already exist
+    if [ ! -d $DF_GIT_DIR ]; then
+        cd "$DF_WORK_TREE"
+        git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
+        dot checkout -f
+    fi
+    . $XDG_CONFIG_HOME/dotfiles/init.sh
+    dot sparse-checkout init --no-cone
+    dot status
 }
+alias dot-init="fn_dot_init"
 # }}}
 # Environment Variables {{{
 set -a # auto-export variables
@@ -79,6 +81,11 @@ alias e="$EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
 alias ll="ls -hlA --group-directories-first"
+alias nsh="nix-shell"
+function fn_nshrun() {
+    eval 'nix-shell -p "$1" --command "'$@'"'
+}
+alias nsh-run="fn_nshrun"
 function fn_yazi() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -88,10 +95,6 @@ function fn_yazi() {
 	rm -f -- "$tmp"
 }
 alias y="fn_yazi"
-function fn_nshrun() {
-    nix-shell -p "$1" --command "$@"
-}
-alias nsh-run="fn_nshrun"
 alias grep="grep --color=auto"
 alias info="info --vi-keys"
 alias df="df -h"

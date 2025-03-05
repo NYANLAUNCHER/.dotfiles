@@ -1,3 +1,11 @@
-"\C-j":"\C-k \C-u ll \n"
-"\C-o":"\C-k \C-u pwd \n"
-"\C-b":backward-word
+set show-all-if-ambiguous on
+set completion-ignore-case on
+
+#"\C-j": '"\C-k"\C-ull\C-m' #bind -x '"\C-j":"ll"' in .bashrc
+"\C-o": '"\C-k"\C-uy\C-m'
+"\ez": 'cd -\015'
+
+"\C-l": clear-screen
+"\C-p": history-search-backward
+"\C-n": history-search-forward
+"\C-b": backward-word
