@@ -6,7 +6,8 @@ export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
 alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
 # adds all changes to tracked files (just adds doesn't commit)
 alias dot-track="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR add -u $DF_WORK_TREE"
-function fn_dot_init() {
+# Apply configurations specific to dotfiles repo, like sparse-checkout
+function fn_dot_configure() {
     # clone the repo if it doesn't already exist
     if [ ! -d $DF_GIT_DIR ]; then
         cd "$DF_WORK_TREE"
@@ -17,7 +18,7 @@ function fn_dot_init() {
     dot sparse-checkout init --no-cone
     dot status
 }
-alias dot-init="fn_dot_init"
+alias dot-configure="fn_dot_configure"
 # }}}
 # Environment Variables {{{
 set -a # auto-export variables
