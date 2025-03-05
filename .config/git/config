@@ -15,7 +15,7 @@
     # print the root git directory
     root = rev-parse --show-toplevel
     # commits all changes; treat it just like git commit
-    ca = !cd $(git root) && git add . && git commit
+    ca = !git add -u $(git root) && git commit
     co = checkout
     st = status
     br = branch -av
@@ -23,6 +23,7 @@
     # Custom Log formats
     last = log -1 HEAD --stat
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lst = !git ls-tree --full-tree --name-only -r HEAD | tree --fromfile .
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [submodule]
     ignore = dirty

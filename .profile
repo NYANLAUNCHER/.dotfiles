@@ -82,7 +82,7 @@ alias e="$EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
 alias ll="ls -hlA --group-directories-first"
-alias nsh="nix-shell"
+alias nsh="nix-shell -p"
 function fn_nshrun() {
     eval 'nix-shell -p "$1" --command "'$@'"'
 }
