@@ -1,5 +1,18 @@
 # ~/.profile must exist
 stty -ixon
+# Util {{{
+export GLOBAL_FN_PATH="$HOME/.local/bin"
+# clean unused global functions
+rm $(cat "$GLOBAL_FN_PATH/.global_fn")
+rm "$GLOBAL_FN_PATH/.global_fn"
+global_fn() {
+	f="$GLOBAL_FN_PATH/$1"
+	touch "$f" && chmod +x "$f"
+	echo "$f" >> "$GLOBAL_FN_PATH/.global_fn"
+	echo "#!/bin/sh" > "$f"
+	echo "$@" | sed 's/^[^ ]* //' >> "$f"
+}
+# }}}
 # Dotfiles {{{
 export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
@@ -7,7 +20,7 @@ alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
 # adds all changes to tracked files (just adds doesn't commit)
 alias dot-track="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR add -u $DF_WORK_TREE"
 # Apply configurations specific to dotfiles repo, like sparse-checkout
-function fn_dot_configure() {
+fn_dot_configure() {
     # clone the repo if it doesn't already exist
     if [ ! -d $DF_GIT_DIR ]; then
         cd "$DF_WORK_TREE"
@@ -83,11 +96,11 @@ alias o="$OPENER"
 alias todo="$EDITOR $todo"
 alias ll="ls -hlA --group-directories-first"
 alias nsh="nix-shell -p"
-function fn_nshrun() {
-    eval 'nix-shell -p "$1" --command "'$@'"'
+fn_nshrun() {
+    nix-shell -p "$1" --command "$*"
 }
 alias nsh-run="fn_nshrun"
-function fn_yazi() {
+fn_yazi() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
 	if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
@@ -133,3 +146,4 @@ _JAVA_OPTIONS=-Djava.util.prefs.userRoot="$XDG_CONFIG_HOME/java"
 PGDATA="$XDG_DATA_HOME/postgres"
 RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 set +a
+# }}}
