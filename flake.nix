@@ -1,36 +1,36 @@
 {
-  description = "Flake to bootstrap home directory";
+  description = "Bootstrap my user environment";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";  # You can choose stable or unstable branches
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { nixpkgs, home-manager, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-      # Get a list of files tracked by Git
-      gitTrackedFiles = builtins.toList (builtins.filter (path: builtins.substring 0 11 path == "./config/") (builtins.splitString "\n" (builtins.fetchurl {
-        url = "git+file://${toString ./}";
-        sha256 = "0v...";  # Replace with the actual hash if necessary
-      })));
-      # Find all files matching the pattern in the config directory
-      homeManagerNixFiles = builtins.filter (file: builtins.elem file gitTrackedFiles) (builtins.glob "./config/**/home-manager.nix");
-    in {
-      homeConfigurations."markiep" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = homeManagerNixFile;
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
-      };
+  outputs = { self, nixpkgs, flake-utils, ... }: flake-utils.lib.eachSystem (system: let
+    pkgs = import nixpkgs {
+      inherit system;
     };
+  in {
+    # The user environment package
+    devShell = pkgs.mkShell {
+      buildInputs = with pkgs; [
+        # Terminal
+        git
+        lazygit
+        yazi
+        # Graphical
+        vieb
+        brave
+        mpv
+        nsxiv
+        f3d
+        zathura
+        litemdview
+      ];
+
+      # Custom environment variables or shell configuration
+      shellHook = ''
+      '';
+    };
+  });
 }
