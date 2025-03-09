@@ -1,5 +1,5 @@
 {
-  description = "Home Manager configuration of markiep";
+  description = "Flake to bootstrap home directory";
 
   inputs = {
     # Specify the source of Home Manager and Nixpkgs.
@@ -27,7 +27,7 @@
 
         # Specify your home configuration modules here, for example,
         # the path to your home.nix.
-        modules = [ ./home.nix ];
+        modules = homeManagerNixFile;
 
         # Optionally use extraSpecialArgs
         # to pass through arguments to home.nix
