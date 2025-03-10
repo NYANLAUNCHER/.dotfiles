@@ -20,18 +20,13 @@
       buildInputs = [ pkgs.wine pkgs.stdenv ];
 
       # Wine and other necessary dependencies for running the game
-      nativeBuildInputs = [ pkgs.x11 ];
+      #nativeBuildInputs = [ pkgs.x11 ];
 
       installPhase = ''
         mkdir -p $out
         # Download and install EVE Online client if needed, or simply set up Wine
         echo "EVE Online will be installed via Wine"
       '';
-
-      meta = with pkgs.lib; {
-        description = "Wine setup for EVE Online";
-        license = licenses.freeware;
-      };
     };
   });
 }

@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";  # You can choose stable or unstable branches
     flake-utils.url = "github:numtide/flake-utils";
+    neovim.url = "path:./.config/nvim"
+    yazi.url = "path:./.config/yazi"
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }: flake-utils.lib.eachSystem (system: let
@@ -15,10 +17,17 @@
     devShell = pkgs.mkShell {
       buildInputs = with pkgs; [
         # Terminal
-        git
+        lf
+        gh
         lazygit
-        yazi
+        direnv
+        zellij
+        neomutt
+        tree
+        libqalculate
+        ytfzf
         # Graphical
+        #ghostty
         vieb
         brave
         mpv
