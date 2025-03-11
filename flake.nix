@@ -4,8 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";  # You can choose stable or unstable branches
     flake-utils.url = "github:numtide/flake-utils";
-    neovim.url = "path:./.config/nvim";
-    yazi.url = "path:./.config/yazi";
+    neovim.url = "git+file://$HOME?dir=.config/neovim";
+    yazi.url = "git+file://$HOME?dir=.config/yazi";
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }: flake-utils.lib.eachDefaultSystem (system: let

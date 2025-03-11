@@ -7,3 +7,13 @@ sort_translit = true
 sort_sensitive = false
 sort_dir_first = true
 scrolloff = 2
+
+# git plugin
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*"
+run  = "git"
+[[plugin.prepend_fetchers]]
+id   = "git"
+name = "*/"
+run  = "git"
