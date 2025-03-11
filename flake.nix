@@ -14,8 +14,6 @@
     packages.default = pkgs.buildEnv {
       # The user environment package
       paths = with pkgs; [
-        neovim
-        yazi
         # Terminal
         lf
         gh
@@ -27,14 +25,14 @@
         libqalculate
         ytfzf
         # Graphical
-        #ghostty
+        ghostty
         vieb
         brave
         mpv
         nsxiv
         f3d
         zathura
-        #litemdview
+        litemdview
       ];
     };
   });

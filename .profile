@@ -3,8 +3,8 @@ stty -ixon
 # Util {{{
 export GLOBAL_FN_PATH="$HOME/.local/bin"
 # clean unused global functions
-rm $(cat "$GLOBAL_FN_PATH/.global_fn")
-rm "$GLOBAL_FN_PATH/.global_fn"
+touch "$GLOBAL_FN_PATH/.global_fn"
+rm "$(cat "$GLOBAL_FN_PATH/.global_fn")" > /dev/null 2>&1
 global_fn() {
 	f="$GLOBAL_FN_PATH/$1"
 	touch "$f" && chmod +x "$f"

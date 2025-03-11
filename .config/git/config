@@ -24,7 +24,8 @@
     last = log -1 HEAD --stat
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     lst = !git ls-tree --full-tree --name-only -r HEAD | tree --fromfile .
-	lsd = !fn_git_lsd # alias around git ls-tree
+	#lsd = !fn_git_lsd # alias around git ls-tree
+	lsd = !ls -hlA --color=always . | grep --color=never "$(git ls-tree --name-only $(git branch --show-current))"
     hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
 [submodule]
     ignore = dirty
