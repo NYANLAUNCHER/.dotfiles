@@ -34,12 +34,13 @@ fn_dot_configure() {
 alias dot-configure="fn_dot_configure"
 fn_dot_nix_profile_install() {
     tmpdir="$(mktemp -d)"
-    (cd && dot ls-files) | while IFS= read -r f ; do
+    echo "Copying dotfiles to $tmpdir"
+    (cd && dot ls-files | grep flake.nix) | while IFS= read -r f ; do
         mkdir -p "$tmpdir/$(dirname $f)"
         [ -e $f ] && cp "$f" "$tmpdir/$f"
     done
-    cd "$tmpdir" && nix profile install . --no-write-lock-file
-    cd -
+    cd "$tmpdir" && nix profile install .
+    cd - > /dev/null 2>&1
 }
 alias dot-profile-install="fn_dot_nix_profile_install"
 # }}}
