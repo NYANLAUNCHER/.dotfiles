@@ -32,6 +32,16 @@ fn_dot_configure() {
     dot status
 }
 alias dot-configure="fn_dot_configure"
+fn_dot_nix_profile_install() {
+    tmpdir="$(mktemp -d)"
+    (cd && dot ls-files) | while IFS= read -r f ; do
+        mkdir -p "$tmpdir/$(dirname $f)"
+        [ -e $f ] && cp "$f" "$tmpdir/$f"
+    done
+    cd "$tmpdir" && nix profile install . --no-write-lock-file
+    cd -
+}
+alias dot-profile-install="fn_dot_nix_profile_install"
 # }}}
 # Environment Variables {{{
 set -a # auto-export variables

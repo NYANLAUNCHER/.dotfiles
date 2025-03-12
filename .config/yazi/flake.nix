@@ -10,6 +10,7 @@
     pkgs = import nixpkgs { inherit system; };
   in {
     packages.default = pkgs.buildEnv {
+      name = "my-yazi-flake";
       paths = with pkgs; [
         yazi
         poppler
