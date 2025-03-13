@@ -3,12 +3,20 @@ This is a mono-repo for my dotfiles
 
 ## Cloning
 ```sh
-cd
+cd ~
 git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" .dotfiles
 git --work-tree=./ --git-dir=.dotfiles/ checkout -f
 . .profile && dot-configure
 # disable sparse-checkout (optional)
 dot sparse-checkout disable
+```
+
+## Updating User Directories
+```sh
+rm -rf ~/Desktop ~/Documents ~/Downloads ~/Music ~/Pictures ~/Public ~/Templates ~/Videos > /dev/null 2>&1
+mkdir -p ~/tmp/.torrent ~/tmp/.iso
+# setup syncthing
+cd && ln -s files/.notes notes
 ```
 
 ## Notes
