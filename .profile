@@ -129,18 +129,10 @@ alias ytfzf-music="ytfzf -m --mpv-flags='--no-video'"
 alias ytfzf-odysee="ytfzf -cO"
 # }}}
 # Integrations {{{
-# source all files with path .config/<dir>/integrations.sh
-find "$XDG_CONFIG_HOME" -mindepth 2 -maxdepth 2 -type f -name 'integrations.sh' | while read -r script; do
+# source all files with path .config/<dir>/init.sh
+find "$XDG_CONFIG_HOME" -mindepth 2 -maxdepth 2 -type f -name 'init.sh' | while read -r script; do
     . "$script"
 done
-# alias all files .config/<prog>/run.sh as <prog>
-temp_alias_file=$(mktemp) # keeps aliases in current shell instead of a subshell
-find "$XDG_CONFIG_HOME" -mindepth 2 -maxdepth 2 -type f -name 'run.sh' | while read -r script; do
-    prog_name=$(basename "$(dirname "$script")")
-    echo "alias $prog_name='$script'" >> "$temp_alias_file"
-done
-[ -s "$temp_alias_file" ] && . "$temp_alias_file"
-rm -f "$temp_alias_file"
 
 # This crap doesn't belong in my home dir
 set -a
