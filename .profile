@@ -35,7 +35,7 @@ alias dot-configure="fn_dot_configure"
 fn_dot_nix_profile_install() {
     tmpdir="$(mktemp -d)"
     echo "Copying dotfiles to $tmpdir"
-    (cd && dot ls-files | grep flake.nix) | while IFS= read -r f ; do
+    (cd && dot ls-files) | while IFS= read -r f ; do
         mkdir -p "$tmpdir/$(dirname $f)"
         [ -e $f ] && cp "$f" "$tmpdir/$f"
     done
