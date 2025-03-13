@@ -27,7 +27,7 @@ fn_dot_configure() {
         git clone --bare "git@github.com:NYANLAUNCHER/.dotfiles" "$DF_GIT_DIR"
         dot checkout -f
     fi
-    . $XDG_CONFIG_HOME/dotfiles/init.sh
+    . $XDG_CONFIG_HOME/dotfiles/_init.sh
     dot sparse-checkout init --no-cone
     dot status
 }
