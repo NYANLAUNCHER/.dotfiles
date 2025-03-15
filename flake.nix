@@ -6,6 +6,7 @@
     flake-utils.url = "github:numtide/flake-utils";
     neovim.url = "path:.config/nvim";
     yazi.url = "path:.config/yazi";
+    vieb.url = "path:.config/vieb";
   };
 
   outputs = { self, nixpkgs, flake-utils, ... }: flake-utils.lib.eachDefaultSystem (system: let
@@ -27,12 +28,11 @@
         ytfzf
         # Graphical
         ghostty
-        vieb
         brave
         mpv
         nsxiv
-        f3d
         zathura
+        f3d
         #litemdview
       ];
     };

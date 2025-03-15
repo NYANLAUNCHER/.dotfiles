@@ -36,6 +36,7 @@ export EDITOR="..."
 export OPENER="..."
 
 # all file paths matching "$XDG_CONFIG_HOME/**/init.sh" are sourced by ~/.profile
+# "$XDG_CONFIG_HOME/**/run.sh" takes precedence over installed executable in user environment
 # place any other shell scripts in "$XDG_CONFIG_HOME/**/shell"
 
 # Other Considerations:

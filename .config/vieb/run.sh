@@ -3,7 +3,7 @@
 # --session="<path>" sets --datafolder=<dir>
 # If <path> doesn't start with "./" or "/" it is a path in $VIEB_SESSIONS_DIR
 # "-t"|"--temp" creates a temporary session 
-. "$XDG_CONFIG_HOME/vieb/integrations.sh" # must be sourced
+. "$XDG_CONFIG_HOME/vieb/init.sh" # must be sourced
 args="$*" # gets parsed into vieb compatible args
 session_dir="$VIEB_DATAFOLDER" # the default session directory
 
