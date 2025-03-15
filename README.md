@@ -21,7 +21,7 @@ cd && ln -s files/.notes notes
 
 ## Notes
 ```sh
-# All my shell scripts assume `~/.profile` is a file,
+# All my shell scripts assume `~/.profile` exists as a file,
 # and that these environment variables are set in .profile:
 # XDG Base dirs
 export XDG_CONFIG_HOME="..."
@@ -33,7 +33,11 @@ export DF_WORK_TREE="..."
 export DF_GIT_DIR="..."
 # default programs
 export EDITOR="..."
+export OPENER="..."
 
-# all paths: "$XDG_CONFIG_HOME/<prog>/integrations.sh" are sourced; where <prog> is a single (sub)dir
-# "$XDG_CONFIG_HOME/<prog>/run.sh" gets aliased as <prog>
+# all file paths matching "$XDG_CONFIG_HOME/**/init.sh" are sourced by ~/.profile
+# place any other shell scripts in "$XDG_CONFIG_HOME/**/shell"
+
+# Other Considerations:
+# - use $DF_WORK_TREE over $HOME for sourcing other dotfile scripts
 ```
