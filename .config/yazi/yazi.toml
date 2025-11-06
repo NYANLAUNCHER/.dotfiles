@@ -2,7 +2,8 @@
 show_hidden = true
 show_symlink = true
 ratio = [2, 2, 3]
-sort_by = "natural"
+#sort_by = "natural"
+sort_by = "alphabetical"
 sort_translit = true
 sort_sensitive = false
 sort_dir_first = true

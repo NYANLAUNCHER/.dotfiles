@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Creates an erwic container,
 # containing the files: run.sh, erwic.json, <cont_name>.desktop
 # Features:

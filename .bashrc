@@ -14,4 +14,10 @@ export PS1="\n\[\033[1;32m\][\[\e]0;\u@\h: \w\a\]\u@\h:\w]\$\[\033[0m\] "
 source "$XDG_CONFIG_HOME/bash/prompt.sh" &> /dev/null
 #}}}
 # Integrations {{{
-
+# pnpm
+export PNPM_HOME="/home/markiep/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end

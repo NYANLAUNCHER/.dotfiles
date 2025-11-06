@@ -9,6 +9,7 @@ local M={}-- custom utils
 --   - newline: (string) Default: '\n'
 --   - indent: (string) Default: '\n'
 -- @return: Returns a string representation of the table.
+--[[
 function M.tableToString(tbl, opts)
   -- Check if the input is a table
   if type(tbl) ~= "table" then
@@ -66,6 +67,21 @@ function M.tableToString(tbl, opts)
 
   -- Call the helper function to convert the table into a string
   return convertTableToString(tbl, opts.indent, opts.newline)
+end
+--]]
+
+function M.tableToString(tbl)
+  local result = "{"
+  for k, v in pairs(tbl) do
+    result = result .. tostring(k) .. "="
+    if type(v) == "table" then
+      result = result .. table_to_string(v)
+    else
+      result = result .. tostring(v)
+    end
+    result = result .. ", "
+  end
+  return result .. "}"
 end
 
 return M

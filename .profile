@@ -1,18 +1,4 @@
-# ~/.profile must exist
 stty -ixon
-# Util {{{
-export GLOBAL_FN_PATH="$HOME/.local/bin"
-# clean unused global functions
-touch "$GLOBAL_FN_PATH/.global_fn"
-rm "$(cat "$GLOBAL_FN_PATH/.global_fn")" > /dev/null 2>&1
-global_fn() {
-	f="$GLOBAL_FN_PATH/$1"
-	touch "$f" && chmod +x "$f"
-	echo "$f" >> "$GLOBAL_FN_PATH/.global_fn"
-	echo "#!/bin/sh" > "$f"
-	echo "$@" | sed 's/^[^ ]* //' >> "$f"
-}
-# }}}
 # Dotfiles {{{
 export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
@@ -49,54 +35,41 @@ alias dot-profile-install="fn_dot_nix_profile_install"
 set -a # auto-export variables
 # Default prompt (posix sh)
 PS1="[$(pwd)]$ "
-
 # XDG Base dirs
 XDG_CONFIG_HOME="$DF_WORK_TREE/.config"
 XDG_CACHE_HOME="$HOME/.cache"
 XDG_DATA_HOME="$HOME/.local/share"
 XDG_STATE_HOME="$HOME/.local/state"
-
 # source XDG User dirs
 . "$XDG_CONFIG_HOME/user-dirs.dirs"
-
 # paths in the user home dir
 PATH="$HOME/.local/bin:$DF_WORK_TREE/.local/bin:$XDG_CONFIG_HOME/shell/cmds:$PATH"
-
 # Set default programs
-EDITOR="nvim"
+EDITOR="nvim" # manditory
+OPENER="xdg-open" # manditory
 PAGER="less"
-OPENER="xdg-open"
 CC="/usr/bin/gcc"
 CXX="/usr/bin/g++"
-
 # Set config dirs
 INPUTRC="$XDG_CONFIG_HOME/inputrc"
 LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 set +a # disable auto-export of variables
 #}}}
-# Shortcuts {{{
+# Directory Shortcuts {{{
 set -a
 cfg="$XDG_CONFIG_HOME"
 dl="$XDG_DOWNLOAD_DIR"
-
+# media
 media="$XDG_DOCUMENTS_DIR/.media"
 imgs="$media/imgs"
 vids="$media/vids"
 audio="$media/audio"
-music="$audio/music"
-doc="$media/doc"
-study="$doc/study"
-
+# source code
 src="$HOME/src"
-sl="$src/local"
-sr="$src/repos"
-st="$src/template"
-
+# notes
 nt="$XDG_DOCUMENTS_DIR/.notes"
-ntd="$nt/dev"
-nto="$nt/org"
-todo="$nto/TODO"
-
+todo="$nt/org/TODO.md"
+# neovim
 nv="$cfg/nvim"
 nvi="$nv/init.lua"
 nvd="$XDG_DATA_HOME/nvim"
@@ -104,14 +77,29 @@ set +a
 # }}}
 # Aliases {{{
 alias e="$EDITOR"
+alias sudoe="sudo $EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
-alias ll="ls -hlA --group-directories-first"
+alias cdtmp="cd $(mktemp -d)"
+alias submake="make -f submake.mk" #Treat submake.mk like Makefile
+fn_ll() {
+    ls $1 -hlA --color=always | head -n 1 # print total
+    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/p' | grep '^d' # hidden dirs
+    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/!p' | grep '^d' # non-hidden dirs
+    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/!p' | grep '^[^d]' # non-hidden files
+    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/p' | grep '^[^d]' # hidden files
+}
+alias ll="fn_ll"
 alias nsh="nix-shell -p"
-fn_nshrun() {
+fn_nshrun() { # nsh-run <pkg> <args>
     nix-shell -p "$1" --command "$*"
 }
 alias nsh-run="fn_nshrun"
+fn_nshins() { # nsh-ins <pkg> <cmd>
+    shift
+    nix-shell -p "$*"
+}
+alias nsh-ins="fn_nshins"
 fn_yazi() {
 	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
 	yazi "$@" --cwd-file="$tmp"
@@ -121,7 +109,9 @@ fn_yazi() {
 	rm -f -- "$tmp"
 }
 alias y="fn_yazi"
-alias grep="grep --color=auto"
+alias microprompt="PS1='> '" # handy in popup terminals
+alias grep="grep --color=always"
+alias diff="diff --color=always"
 alias info="info --vi-keys"
 alias df="df -h"
 alias hist="history"

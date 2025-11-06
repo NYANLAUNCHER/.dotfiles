@@ -1,5 +1,5 @@
 {
-  description = "Bootstrap my user environment";
+  description = "My user environment";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";  # You can choose stable or unstable branches
@@ -9,7 +9,13 @@
     vieb.url = "path:.config/vieb";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }: flake-utils.lib.eachDefaultSystem (system: let
+  outputs = {
+    self,
+    nixpkgs,
+    flake-utils,
+    ...
+  }: 
+  flake-utils.lib.eachDefaultSystem (system: let
     pkgs = import nixpkgs { inherit system; };
   in {
     packages.default = pkgs.buildEnv {

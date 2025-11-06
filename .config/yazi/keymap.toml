@@ -1,16 +1,47 @@
-# chmod
+# Manager {{{
+# Directory Shortcuts {{{
+[[manager.prepend_keymap]]
+on   = [ "g", "c" ]
+run  = "cd $XDG_CONFIG_HOME"
+desc = "Goto config"
+[[manager.prepend_keymap]]
+on   = [ "g", "y" ]
+run  = "cd $XDG_CONFIG_HOME/yazi"
+desc = "Goto yazi config"
+[[manager.prepend_keymap]]
+on   = [ "g", "f" ]
+run  = "cd $XDG_DOCUMENTS_DIR"
+desc = "Goto documents"
+[[manager.prepend_keymap]]
+on   = [ "g", "s" ]
+run  = "cd $src"
+desc = "Goto source code"
+[[manager.prepend_keymap]]
+on   = [ "g", "t" ]
+run  = "cd ~/.local/share/Trash/files"
+desc = "Goto trash"
+#[[manager.keymap]]
+#on = ["<C-o>"]
+#run = "plugin startup-dir back_to_startup"
+#desc = "Go back to startup directory"
+
+# Plugins
 [[manager.prepend_keymap]]
 on   = [ "c", "m" ]
 run  = "plugin chmod"
 desc = "Chmod on selected files"
-
-# mount
 [[manager.prepend_keymap]]
 on  = "M"
 run = "plugin mount"
-
-# smart-enter
+desc = "Mount filesystem"
 [[manager.prepend_keymap]]
 on   = "l"
 run  = "plugin smart-enter"
 desc = "Enter the child directory, or open the file"
+
+# Help
+[[manager.prepend_keymap]]
+on   = "?"
+run  = "help"
+desc = "Open help menu"
+#}}}

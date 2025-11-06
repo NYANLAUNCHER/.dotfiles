@@ -1,5 +1,5 @@
 local vim=vim
-local util=require('config.util')
+-- stand-alone neovim config file, for plugin-less config
 
 -- Options: (:help lua-guide-options) {{{
 vim.cmd('filetype plugin indent on')
@@ -11,7 +11,7 @@ vim.opt.errorbells=true
 vim.opt.timeoutlen=800
 vim.opt.splitbelow=true
 vim.opt.splitright=true
-vim.opt.mouse='nv'
+vim.opt.mouse=''
 -- Navigation
 vim.opt.scrolloff=8
 vim.opt.sidescrolloff=6
@@ -105,9 +105,7 @@ keymap('n', ',o', 'o<ESC>')
 keymap('n', ',O', 'O<ESC>')
 
 -- Use Sys Cliboard
---vim.g.clipboard = vim.opt.clipboard:get() .. 'unamedplus'
-vim.notify(util.tableToString(vim.opt.clipboard:get()), vim.log.levels.INFO)
-vim.notify(util.tableToString({foo={bar="baz"}}), vim.log.levels.INFO)
+vim.g.clipboard = {'unamedplus'}
 keymap('n', '<leader>Y', '"+yg_')
 keymap({'n', 'v'}, '<leader>y', '"+y')
 keymap({'n', 'v'}, '<leader>p', '"+p')
@@ -127,8 +125,14 @@ com! W w!
 com! Reload source $MYVIMRC
 ]])
 
--- augroup saveOnClose
--- augroup trimWhitespace
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  pattern = "*",
+  callback = function()
+    if vim.bo.modified and vim.fn.bufname() ~= "" then
+      vim.cmd("silent write")
+    end
+  end,
+})
 
 vim.api.nvim_create_autocmd("TermClose", {
   pattern = "",
@@ -138,9 +142,30 @@ vim.api.nvim_create_autocmd("TermClose", {
 })
 
 function PingCursor()
-  vim.cmd('set cul! cuc! | sleep 300m')
-  vim.cmd('set cul! cuc! | sleep 300m')
-  vim.cmd('set cul! cuc! | sleep 300m')
+  -- Enable highlighting
+  vim.opt.cursorline = true
+  vim.opt.cursorcolumn = true
+  local flashes = 3
+  local delay = 175
+  local count = 0
+  local timer = vim.loop.new_timer()
+  timer:start(0, delay, function()
+    vim.schedule(function()
+      -- Toggle cursor line/column
+      local on = (count % 2 == 0)
+      vim.opt.cursorline = on
+      vim.opt.cursorcolumn = on
+
+      count = count + 1
+      if count >= flashes * 2 then
+        timer:stop()
+        timer:close()
+        -- Restore to default (off)
+        vim.opt.cursorline = false
+        vim.opt.cursorcolumn = false
+      end
+    end)
+  end)
 end
 
 local windowMaximized = 0
