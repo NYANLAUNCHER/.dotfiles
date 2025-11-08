@@ -1,6 +1,3 @@
-local vim=vim
--- stand-alone neovim config file, for plugin-less config
-
 -- Options: (:help lua-guide-options) {{{
 vim.cmd('filetype plugin indent on')
 vim.cmd('packadd! matchit')

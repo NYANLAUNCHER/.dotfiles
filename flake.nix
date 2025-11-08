@@ -4,18 +4,12 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";  # You can choose stable or unstable branches
     flake-utils.url = "github:numtide/flake-utils";
-    neovim.url = "path:.config/nvim";
-    yazi.url = "path:.config/yazi";
-    vieb.url = "path:.config/vieb";
+    yazi.url = "github:NYANLAUNCHER/yazi";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    flake-utils,
-    ...
-  }: 
-  flake-utils.lib.eachDefaultSystem (system: let
+  outputs = { self, nixpkgs, flake-utils, ... }@inputs: 
+  flake-utils.lib.eachDefaultSystem (system:
+  let
     pkgs = import nixpkgs { inherit system; };
   in {
     packages.default = pkgs.buildEnv {
@@ -23,6 +17,7 @@
       name = "my-user-profile";
       paths = with pkgs; [
         # Terminal
+        inputs.yazi
         lf
         gh
         lazygit

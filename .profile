@@ -77,19 +77,13 @@ set +a
 # }}}
 # Aliases {{{
 alias e="$EDITOR"
+alias ef="$EDITOR flake.nix"
 alias sudoe="sudo $EDITOR"
 alias o="$OPENER"
 alias todo="$EDITOR $todo"
 alias cdtmp="cd $(mktemp -d)"
-alias submake="make -f submake.mk" #Treat submake.mk like Makefile
-fn_ll() {
-    ls $1 -hlA --color=always | head -n 1 # print total
-    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/p' | grep '^d' # hidden dirs
-    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/!p' | grep '^d' # non-hidden dirs
-    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/!p' | grep '^[^d]' # non-hidden files
-    ls $1 -hlA --color=always | tail -n +2 | sed -n '/[[:space:]]\+\.[^[:space:]]*$/p' | grep '^[^d]' # hidden files
-}
-alias ll="fn_ll"
+alias submake="make -f submake.mk"
+alias ll="ls -hlA --color=always --group-directories-first"
 alias nsh="nix-shell -p"
 fn_nshrun() { # nsh-run <pkg> <args>
     nix-shell -p "$1" --command "$*"
