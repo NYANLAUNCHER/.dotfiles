@@ -5,7 +5,7 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";  # You can choose stable or unstable branches
     flake-utils.url = "github:numtide/flake-utils";
     neovim.url = "github:NYANLAUNCHER/nvim";
-    yazi.url = "github:NYANLAUNCHER/yazi";
+    #yazi.url = "github:NYANLAUNCHER/yazi";
   };
 
   outputs = {
@@ -21,10 +21,11 @@
       # The user environment package
       name = "my-user-profile";
       paths = [
-        neovim.packages.${system}.default
-        yazi.packages.${system}.default
+        inputs.neovim.packages.${system}.default
+        #inputs.yazi.packages.${system}.default
       ] ++ (with pkgs; [
         # Terminal
+        yazi
         gh
         lazygit
         direnv

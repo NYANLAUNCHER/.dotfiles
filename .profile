@@ -21,13 +21,9 @@ fn_dot_configure() {
 alias dot-configure="fn_dot_configure"
 fn_dot_nix_profile_install() {
     tmpdir="$(mktemp -d)"
-    echo "Copying dotfiles to $tmpdir"
-    (cd && dot ls-files) | while IFS= read -r f ; do
-        mkdir -p "$tmpdir/$(dirname $f)"
-        [ -e $f ] && cp "$f" "$tmpdir/$f"
-    done
-    cd "$tmpdir" && nix profile install .
-    cd - > /dev/null 2>&1
+    git --git-dir="$DF_GIT_DIR" archive HEAD | tar -x -C "$tmpdir"
+    echo $tmpdir
+    #nix profile install $tmpdir
 }
 alias dot-profile-install="fn_dot_nix_profile_install"
 # }}}
