@@ -22,8 +22,7 @@ alias dot-configure="fn_dot_configure"
 fn_dot_nix_profile_install() {
     tmpdir="$(mktemp -d)"
     git --git-dir="$DF_GIT_DIR" archive HEAD | tar -x -C "$tmpdir"
-    echo $tmpdir
-    #nix profile install $tmpdir
+    nix profile install "$tmpdir#packages.x86_64-linux.default"
 }
 alias dot-profile-install="fn_dot_nix_profile_install"
 # }}}

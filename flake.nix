@@ -40,6 +40,7 @@
         zathura
         f3d
       ]);
+      pathsToLink = [ "bin" "share" "lib" ];
     };
   });
 }
