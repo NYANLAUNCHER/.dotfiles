@@ -3,7 +3,7 @@ source ~/.profile
 shopt -s autocd
 shopt -s direxpand
 #set -o vi
-# Keybinds {{{
+# Keybinds & Completion {{{
 bind -f ~/.inputrc
 bind -x '"\C-j":"ll"'
 #}}}

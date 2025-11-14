@@ -22,6 +22,10 @@ set pointerposlocalid=url
 set timeout=true
 set timeoutlen=6000
 
+set permissionmediadevices=allowfull
+set permissionmicrophone=ask
+set permissioncamera=ask
+
 " Commands
 " use 'command!' to overwrite any existing cmds
 command! mpv <:!mpv "<useCurrentUrl>">

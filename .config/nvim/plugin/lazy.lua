@@ -15,16 +15,25 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- make sure mapleader is set
-if vim.g.mapleader == nil then
-  vim.g.mapleader = ' '
-end
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+vim.g.mapleader = " "
+vim.g.maplocalleader = "\\"
 
-require'lazy'.setup('config.plugins', { --opts:
-  change_detection = { enabled = false },
-  ui = {
-    border = 'rounded',
-    title = 'Plugin Manager',
-    title_pos = 'center',
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    { import = "plugins" }, -- ~/.config/nvim/lua/plugins/
+    { "hex",
+		  dir = vim.fn.stdpath("config").."/lua/hex",
+		  config = function()
+				require("hex").setup({})
+			end
+		}
   },
+  install = { colorscheme = { "catpuccin-mocha" } },
+  checker = { enabled = false },
+  -- check of config changes
+  change_detection = { notify = false },
 })
