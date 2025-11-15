@@ -21,10 +21,11 @@
       # The user environment package
       name = "my-user-profile";
       paths = [
-        inputs.neovim.packages.${system}.default
+        #inputs.neovim.packages.${system}.default
         #inputs.yazi.packages.${system}.default
       ] ++ (with pkgs; [
         # Terminal
+        neovim
         yazi
         gh
         lazygit
@@ -40,7 +41,6 @@
         zathura
         f3d
       ]);
-      pathsToLink = [ "bin" "share" "lib" ];
     };
   });
 }

@@ -1,5 +1,5 @@
 {
-  description = "Portable Neovim flake with a clean, wrapper-less devShell.";
+  description = "My portable Neovim development environment.";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -16,12 +16,23 @@
       pkgs = import nixpkgs { inherit system; };
       nvimRuntimeDeps = with pkgs; [
         neovim
+        # Utils
         ripgrep
         fd
         git
+        # Nix
+        nil
+        # Lua
         stylua
         lua-language-server
-        nil
+        # C/C++
+        libgcc
+        gdb
+        ccls
+        # Rust
+        rustc
+        cargo
+        rust-analyzer
       ];
 
       nvimConfigPath = "/share/nvim";
@@ -65,7 +76,6 @@
 
         shellHook = ''
           NIX_CONFIG_PATH="${myNvim}/share"
-          export source=$src
 
           # This function runs every time 'nvim' is called in the shell.
           nvim() {

@@ -4,8 +4,6 @@ export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
 alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
 alias lazydot="lazygit --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
-# adds all changes to tracked files (just adds doesn't commit)
-alias dot-track="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR add -u $DF_WORK_TREE"
 # Apply configurations specific to dotfiles repo, like sparse-checkout
 fn_dot_configure() {
     # clone the repo if it doesn't already exist
@@ -28,7 +26,7 @@ alias dot-profile-install="fn_dot_nix_profile_install"
 # }}}
 # Environment Variables {{{
 set -a # auto-export variables
-# Default prompt (posix sh)
+# Default prompt
 PS1="[$(pwd)]$ "
 # XDG Base dirs
 XDG_CONFIG_HOME="$DF_WORK_TREE/.config"

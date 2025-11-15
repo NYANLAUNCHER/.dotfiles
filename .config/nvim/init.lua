@@ -1,3 +1,4 @@
+local _ = require("config.lazy")-- run dat bih
 local u = require("config.util")
 
 -- Options: (:help lua-guide-options) {{{
