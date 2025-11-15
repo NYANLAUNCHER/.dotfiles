@@ -9,6 +9,8 @@ git --work-tree=./ --git-dir=.dotfiles/ checkout -f
 . .profile && dot-configure
 # disable sparse-checkout (optional)
 dot sparse-checkout disable
+# for use as a nix profile
+dot-profile-install
 ```
 
 ## Updating User Directories
