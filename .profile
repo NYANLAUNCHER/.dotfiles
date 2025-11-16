@@ -2,7 +2,10 @@ stty -ixon
 # Dotfiles {{{
 export DF_WORK_TREE="$HOME" # This is where all the dot files reside
 export DF_GIT_DIR="$DF_WORK_TREE/.dotfiles"
-alias dot="git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
+fn_dot() {
+    git --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR "$@"
+}
+alias dot="fn_dot"
 alias lazydot="lazygit --work-tree=$DF_WORK_TREE/ --git-dir=$DF_GIT_DIR"
 # Apply configurations specific to dotfiles repo, like sparse-checkout
 fn_dot_configure() {
@@ -17,12 +20,55 @@ fn_dot_configure() {
     dot status
 }
 alias dot-configure="fn_dot_configure"
-fn_dot_nix_profile_install() {
-    tmpdir="$(mktemp -d)"
-    git --git-dir="$DF_GIT_DIR" archive HEAD | tar -x -C "$tmpdir"
-    nix profile install "$tmpdir#packages.x86_64-linux.default"
+# convert a normal url into a flake url
+fn_conv_url_to_flake() {
+    case $1 in
+        git@*) echo "git+ssh://$(printf %s "$1" | sed 's/:/\//; s/\.git$//')" ;;
+        *)     echo "git+$(printf %s "$1" | sed 's/\.git$//')" ;;
+    esac
 }
-alias dot-profile-install="fn_dot_nix_profile_install"
+# new profile version from ~/flake.nix
+fn_dot_profile_test() {
+    tmpdir=$(mktemp -d)
+    echo -e "\e[2mCopying tracked files\e[22m into \e[32m$tmpdir\e[39m"
+    cp $DF_WORK_TREE/flake.nix $tmpdir
+    echo -e "\e[2mInstalling profile\e[22m \e[1m\`\e[32m$tmpdir#default\e[39m\`\e[22m"
+    nix profile install "$tmpdir#default"
+}
+alias profile-test="fn_dot_profile_test"
+# upgrade profile to HEAD
+fn_dot_profile_upgrade() {
+    case "$1" in
+        "--origin")
+            origin=$(fn_conv_url_to_flake $(fn_dot remote get-url origin))
+            origin="$(echo "$origin" | grep --color=never '#' || echo "$origin#default")"
+            if [ -n "$origin" ]; then
+                echo -e "\e[2mUpgrading nix profile\e[22m to \e[1m\`\e[32m$origin\e[39m\`\e[22m"
+                [ -n "$2" ] && echo "Ignoring arguments after \`--origin\`"
+                nix profile install "$origin" --no-write-lock-file
+            else
+                echo "Cannot determine origin for $DF_GIT_DIR."
+            fi
+        ;;
+        "--url")
+            url="$2"
+            url="$(echo "$url" | grep --color=never '#' || echo "$url#default")"
+            if [ -n "$url" ]; then
+                echo -e "\e[2mUpgrading nix profile\e[22m to \e[1m\`\e[32m$url\e[39m\`\e[22m"
+                nix profile install "$url"
+            else
+                echo "Please input a valid flake url after argument \`--url\`."
+            fi
+        ;;
+        *) #upgrade to HEAD in ~/.dotfiles ($DF_GIT_DIR)
+            echo -e "\e[2mUpgrading nix profile\e[22m to \e[1m\e[32mHEAD\e[39m\e[22m @ \e[34m$(fn_dot rev-parse HEAD)\e[39m"
+            tmpdir=$(mktemp -d)
+            fn_dot archive HEAD | tar -x -C "$tmpdir"
+            nix profile install "$tmpdir#default"
+        ;;
+    esac
+}
+alias profile-upgrade="fn_dot_profile_upgrade"
 # }}}
 # Environment Variables {{{
 set -a # auto-export variables
